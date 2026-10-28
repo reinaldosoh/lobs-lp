@@ -1,0 +1,7 @@
+---
+import Wordmark from "./Wordmark.astro";
+import { APP_URL } from "../site";
+import LobCycler from "./islands/LobCycler";
+import LobsHero from "./islands/LobsHero";
+---
+<LobsHero client:load><div class="mx-auto flex max-w-[1100px] flex-col items-center text-center"><h1 class="flex text-[44px] leading-[1.02] font-medium tracking-[-0.035em] sm:text-[64px] md:text-[92px] flex-wrap items-center justify-center gap-x-[0.2em]"><span>Conheça</span><span class="-my-[0.13em] inline-block h-[1.22em] w-[1.2em] translate-y-[0.02em]"><LobCycler client:load uid="hero" class="animate-breathe size-full" /></span><span>os <Wordmark /></span></h1><p class="mt-5 max-w-[520px] text-[16px] leading-[26px] text-muted md:text-[18px] md:leading-[28px]">Agentes de IA que falam a favor da sua empresa. Atendem, agendam, cuidam do financeiro e não deixam nenhum cliente sem resposta.</p><div class="mt-7 flex flex-col items-center gap-3 sm:flex-row"><a href={APP_URL} class="inline-flex items-center justify-center gap-2 rounded-full whitespace-nowrap h-[52px] px-7 text-[17px] btn-glossy ">Começar agora</a><a href={APP_URL} class="inline-flex items-center justify-center gap-2 rounded-full whitespace-nowrap h-[52px] px-7 text-[17px] bg-surface-2 text-ink transition-[background-color,transform] duration-200 hover:bg-[#dcebfb] active:scale-[0.98] ">Entrar</a></div></div></LobsHero>

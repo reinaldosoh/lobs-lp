@@ -1,0 +1,26 @@
+/*
+ * Tailwind utilities for classes that aren't in the original compiled CSS
+ * (global.css). Same layer names, same tokens, so existing classes render
+ * identically and new ones just work.
+ */
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--border);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-zappy: var(--zappy);
+  --color-zappy-strong: var(--zappy-strong);
+  --color-zappy-sky: var(--zappy-sky);
+  --color-zappy-ice: var(--zappy-ice);
+  --color-bubble: var(--bubble);
+  --color-eye: var(--eye);
+  --color-success: var(--success);
+}

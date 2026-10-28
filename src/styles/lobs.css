@@ -1,0 +1,73 @@
+/* "!!" marks above each lob: a small pop every few seconds */
+@keyframes lob-ticks {
+  0%, 70%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
+  78% { transform: scale(1.18) rotate(-6deg); }
+  86% { transform: scale(0.94) rotate(3deg); }
+}
+.lob-ticks {
+  transform-box: fill-box;
+  transform-origin: 0% 100%;
+  animation: lob-ticks 3.6s cubic-bezier(0.2, 0.7, 0.2, 1) infinite;
+}
+
+/* Primary buttons in the blue lob's colours (light #5AB6FF → base #1F7DF5 → shade #0B52D8) */
+.btn-glossy {
+  text-shadow: 0 1px rgba(8, 60, 170, 0.35);
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0.07) 48%, rgba(255, 255, 255, 0) 52%),
+    linear-gradient(#5AB6FF 0%, #1F7DF5 58%, #1466E6 100%);
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.5),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.16),
+    inset 0 -2px 6px rgba(11, 82, 216, 0.35),
+    0 1px 2px rgba(31, 125, 245, 0.25),
+    0 10px 24px -10px rgba(31, 125, 245, 0.75);
+}
+.btn-glossy:hover {
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.55),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.18),
+    inset 0 -2px 6px rgba(11, 82, 216, 0.38),
+    0 2px 4px rgba(31, 125, 245, 0.28),
+    0 16px 30px -12px rgba(31, 125, 245, 0.85);
+}
+.btn-glossy:active {
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.4),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.14),
+    inset 0 -1px 4px rgba(11, 82, 216, 0.4),
+    0 4px 12px -6px rgba(31, 125, 245, 0.65);
+}
+.btn-glossy:focus-visible {
+  outline-color: #1F7DF5;
+}
+
+/* Lobs floating in place (composes with Tailwind's `translate`, which is a separate property) */
+@keyframes lob-float {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-10px) rotate(2deg); }
+}
+.lob-float { animation: lob-float 5.5s ease-in-out infinite; }
+
+/* Scroll-driven touches where the browser supports them; elsewhere everything just shows */
+@supports (animation-timeline: scroll()) {
+  @keyframes progress-grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  .scroll-progress {
+    transform-origin: 0 50%;
+    animation: progress-grow linear both;
+    animation-timeline: scroll(root);
+  }
+  @keyframes blur-in {
+    from { opacity: 0; filter: blur(14px); transform: translateY(18px); }
+    to { opacity: 1; filter: blur(0); transform: none; }
+  }
+  .reveal-blur {
+    animation: blur-in linear both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 35%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lob-float, .scroll-progress, .reveal-blur { animation: none; }
+}

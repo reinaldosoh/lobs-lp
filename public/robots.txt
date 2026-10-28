@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /logo
+
+Sitemap: https://lobsbot.com.br/sitemap.xml

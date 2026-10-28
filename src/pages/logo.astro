@@ -1,0 +1,16 @@
+---
+import Base from "../layouts/Base.astro";
+import Wordmark from "../components/Wordmark.astro";
+import Lob, { LobsLineup, LOB_LINEUP } from "../components/islands/Lob";
+---
+<Base>
+  <main class="px-4 py-16">
+    <div style="background:#000;border-radius:32px;padding:64px 24px 48px;max-width:1100px;margin:0 auto;text-align:center">
+      <Wordmark tone="dark" class="text-[96px] leading-none md:text-[160px]" />
+      <LobsLineup class="mx-auto mt-10 w-full max-w-[900px]" />
+    </div>
+    <div class="mx-auto mt-12 flex max-w-[1100px] flex-wrap justify-center gap-8">
+      {LOB_LINEUP.map((c) => <Lob client:load color={c} uid={`demo-${c}`} class="size-16 animate-breathe" />)}
+    </div>
+  </main>
+</Base>

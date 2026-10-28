@@ -1,0 +1,20 @@
+---
+/**
+ * "lobs" wordmark in the brand gradient (blue → mint → yellow → orange → pink).
+ * `tone="light"` uses deeper stops so the pale middle stays readable on white.
+ */
+interface Props {
+  tone?: "light" | "dark";
+  class?: string;
+}
+const { tone = "light", class: cls = "" } = Astro.props;
+const gradient =
+  tone === "dark"
+    ? "linear-gradient(90deg, #4DA3FF 0%, #B8F5E6 32%, #FFE89A 48%, #FFA566 68%, #FF6BC6 100%)"
+    : "linear-gradient(90deg, #2E86FF 0%, #18B9A0 30%, #F2A900 50%, #FF7A2E 70%, #FF3D9E 100%)";
+const glow = tone === "dark" ? "drop-shadow(0 0 18px rgba(255,255,255,0.25))" : "none";
+---
+<span
+  class={cls}
+  style={`background:${gradient};-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:700;letter-spacing:-0.04em;filter:${glow}`}
+>lobs</span>
