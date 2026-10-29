@@ -98,3 +98,11 @@ html,body{overflow-x:clip;max-width:100%}
     animation: none;
   }
 }
+
+/* Viagem dos lobs (LobsViagem): enquanto eles estão fora do hero, os do hero somem; o cartão espera o seu. */
+html[data-viagem] [data-hero-lob] {
+  visibility: hidden;
+}
+.lob-slot-vazio {
+  opacity: 0;
+}

@@ -248,7 +248,7 @@ export default function LobsHero({ children }: { children?: ComponentChildren })
   }, []);
 
   return (
-    <section ref={sectionRef} class="relative -mt-16 h-[330vh] md:-mt-[72px]">
+    <section ref={sectionRef} id="lobs-hero" class="relative -mt-16 h-[330vh] md:-mt-[72px]">
       <div ref={stageRef} class="sticky top-0 h-svh overflow-hidden">
         <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(45%_40%_at_50%_100%,rgba(90,182,255,0.22),transparent),radial-gradient(30%_30%_at_10%_90%,rgba(255,138,15,0.10),transparent),radial-gradient(30%_30%_at_90%_90%,rgba(154,76,245,0.10),transparent)]" />
 
@@ -314,6 +314,7 @@ export default function LobsHero({ children }: { children?: ComponentChildren })
             ref={(el) => {
               lobRefs.current[r.color] = el;
             }}
+            data-hero-lob={r.color}
             class="pointer-events-none absolute top-0 left-0"
             style={{ width: BASE, height: BASE * RATIO, transformOrigin: "50% 50%", transform: "translateY(120vh)" }}
             aria-hidden="true"
