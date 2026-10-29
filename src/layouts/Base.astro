@@ -29,10 +29,20 @@ const ogImage = new URL("/og-lobs.jpg", SITE_URL).href;
     <meta name="twitter:image" content={ogImage} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#f4f9ff" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="lobs" />
+    <meta name="application-name" content="lobs" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <link rel="preload" href="/fonts/caa3a2e1cccd8315-s.p.0zr6hhvz-h9nw.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/797e433ab948586e-s.p.1v5bejj26fx9h.woff2" as="font" type="font/woff2" crossorigin />
   </head>
   <body class="min-h-full bg-bg text-ink">
     <slot />
+    <script is:inline>
+      if ("serviceWorker" in navigator) window.addEventListener("load", () => navigator.serviceWorker.register("/sw.js"));
+    </script>
   </body>
 </html>
