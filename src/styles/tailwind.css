@@ -24,3 +24,30 @@
   --color-eye: var(--eye);
   --color-success: var(--success);
 }
+
+/* Tokens do painel real do lobs (apps/web + packages/ui/tema.css), para a LP mostrar as mesmas telas. */
+@theme {
+  --color-pn-bg: #f4f9ff;
+  --color-pn-card: #ffffff;
+  --color-pn-chat: #eef5fd;
+  --color-pn-border: #d8e7f6;
+  --color-pn-border-strong: #bcd3ec;
+  --color-pn-input: #cfe0f2;
+  --color-pn-surface: #e9f3fe;
+  --color-pn-fg: #0b1b2e;
+  --color-pn-muted: #5d6e83;
+  --color-pn-neutral: #34465c;
+  --color-pn-subtle: #8494a8;
+  --color-pn-brand: #1f7df5;
+  --color-pn-brand-deep: #0b52d8;
+  --color-pn-brand-soft: rgba(31, 125, 245, 0.1);
+  --color-pn-success: #16a34a;
+  --color-pn-success-soft: rgba(63, 203, 46, 0.14);
+  --color-pn-success-fg: #15803d;
+  --color-pn-warning: #e85f00;
+  --color-pn-warning-soft: rgba(255, 138, 15, 0.14);
+  --color-pn-warning-fg: #c2410c;
+  --color-pn-roxo: #9a4cf5;
+  --shadow-pn-card: 0 1px 2px rgba(11, 27, 46, 0.05), 0 8px 24px -16px rgba(11, 27, 46, 0.18);
+  --shadow-pn-pop: 0 18px 44px -14px rgba(11, 27, 46, 0.28), 0 0 0 1px rgba(11, 27, 46, 0.04);
+}

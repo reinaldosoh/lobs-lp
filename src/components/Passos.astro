@@ -1,0 +1,75 @@
+---
+import Lob from "./islands/Lob";
+import { APP_URL } from "../site";
+const CEU = "bg-[radial-gradient(90%_70%_at_0%_100%,#8CC8FA_0%,transparent_60%),radial-gradient(80%_70%_at_100%_0%,#D6F4FF_0%,transparent_60%),linear-gradient(160deg,#EAF6FF_0%,#BFE2FF_55%,#93CBF8_100%)]";
+// QR de enfeite (não é um código real).
+const FINDER = [0,1,2,9,10,11,18,19,20,6,7,8,15,16,17,24,25,26,54,55,56,63,64,65,72,73,74];
+let seed = 7;
+// QR de enfeite (não é um código real).
+const QR = Array.from({ length: 81 }, (_, i) => { seed = (seed * 1103515245 + 12345) % 2147483648; return FINDER.includes(i) || seed % 7 < 3; });
+---
+<section id="passos" class="px-4 py-20 md:px-6 md:py-24">
+  <div class="mx-auto max-w-[1100px]">
+    <div class="mx-auto max-w-[760px] text-center">
+      <h2 class="h-section">Os lobs no seu WhatsApp em 3 passos</h2>
+      <p class="mt-4 text-[16px] leading-[26px] text-ink/75 md:text-[18px] md:leading-[29px]">Sem instalar nada e sem montar fluxo. Você testa de graça e os lobs começam a atender.</p>
+    </div>
+
+    <div class="mt-12 grid gap-4 lg:grid-cols-3">
+      <div class="flex flex-col rounded-3xl border border-line bg-surface p-6 pb-0 sm:p-8 sm:pb-0">
+        <span class="text-[13px] font-medium text-[#1f7df5]">PASSO 1</span>
+        <h3 class="mt-1 text-[18px] leading-[26px] font-medium">Crie sua conta</h3>
+        <p class="text-[16px] leading-[26px] text-ink/75">Entre no painel e conte sobre a sua empresa. Leva poucos minutos.</p>
+        <div class={`relative mt-6 h-[280px] overflow-hidden rounded-t-2xl ${CEU}`}>
+          <div class="absolute inset-x-5 top-6 rounded-2xl border border-pn-border bg-white p-5 shadow-[0_24px_60px_-28px_rgba(11,27,46,0.4)]">
+            <div class="flex items-center gap-2"><Lob still ticks={false} uid="p1" class="size-8" /><span class="text-[15px] font-semibold text-pn-fg">Criar conta</span></div>
+            <div class="mt-4 h-10 rounded-full border border-pn-input bg-pn-surface px-4 text-[13.5px] leading-10 text-pn-subtle">voce@suaempresa.com.br</div>
+            <div class="btn-glossy mt-3 flex h-10 items-center justify-center rounded-full text-[14px] font-semibold">Testar grátis</div>
+          </div>
+          <div class="absolute -right-6 -bottom-8 w-[120px]"><Lob still ticks={true} uid="p1b" color="orange" class="w-full" /></div>
+        </div>
+      </div>
+
+      <div class="flex flex-col rounded-3xl border border-line bg-surface p-6 pb-0 sm:p-8 sm:pb-0">
+        <span class="text-[13px] font-medium text-[#1f7df5]">PASSO 2</span>
+        <h3 class="mt-1 text-[18px] leading-[26px] font-medium">Conecte o WhatsApp</h3>
+        <p class="text-[16px] leading-[26px] text-ink/75">Leia o QR code com o número que você já usa. Seus clientes seguem falando com o mesmo contato.</p>
+        <div class={`relative mt-6 h-[280px] overflow-hidden rounded-t-2xl ${CEU}`}>
+          <div class="absolute inset-x-5 top-6 flex items-center gap-4 rounded-2xl border border-pn-border bg-white p-5 shadow-[0_24px_60px_-28px_rgba(11,27,46,0.4)]">
+            <div class="grid size-[104px] shrink-0 grid-cols-9 gap-[2px] rounded-xl bg-white p-1.5 ring-1 ring-pn-border">
+              {QR.map((on) => <span class={on ? "rounded-[1px] bg-pn-fg" : "rounded-[1px] bg-transparent"} />)}
+            </div>
+            <div class="min-w-0">
+              <p class="text-[14px] font-semibold text-pn-fg">Conectar WhatsApp</p>
+              <p class="mt-1 text-[12.5px] leading-[18px] text-pn-muted">Aponte a câmera do celular para o código.</p>
+              <span class="mt-2 inline-flex items-center gap-1 rounded-full bg-pn-success-soft px-2.5 py-0.5 text-[12px] font-medium text-pn-success-fg">Conectado ✓</span>
+            </div>
+          </div>
+          <div class="absolute -right-6 -bottom-8 w-[120px]"><Lob still ticks={true} uid="p2b" color="green" class="w-full" /></div>
+        </div>
+      </div>
+
+      <div class="flex flex-col rounded-3xl border border-line bg-surface p-6 pb-0 sm:p-8 sm:pb-0">
+        <span class="text-[13px] font-medium text-[#1f7df5]">PASSO 3</span>
+        <h3 class="mt-1 text-[18px] leading-[26px] font-medium">Os lobs atendem</h3>
+        <p class="text-[16px] leading-[26px] text-ink/75">Eles respondem, agendam e fazem follow-up. Você acompanha no painel e assume quando quiser.</p>
+        <div class={`relative mt-6 h-[280px] overflow-hidden rounded-t-2xl ${CEU}`}>
+          <div class="absolute inset-x-5 top-6 flex flex-col gap-2 rounded-2xl border border-pn-border bg-pn-chat p-4 shadow-[0_24px_60px_-28px_rgba(11,27,46,0.4)]">
+            <div class="max-w-[80%] self-start rounded-[18px] rounded-tl-[6px] bg-white px-3.5 py-2 text-[13.5px] shadow-[0_1px_1px_rgba(11,27,46,0.08)]">Tem horário amanhã à tarde?</div>
+            <div class="max-w-[85%] self-end rounded-[18px] rounded-tr-[6px] border border-pn-brand/20 bg-gradient-to-b from-[#e6f1ff] to-[#d8e9ff] px-3.5 py-2 text-[13.5px] shadow-[0_1px_1px_rgba(11,27,46,0.08)]">
+              <span class="mb-0.5 flex items-center gap-1 text-[11px] font-semibold text-pn-brand"><Lob still ticks={false} uid="p3" class="w-3.5" />lob</span>
+              Tenho às 15h e às 16h30. Já deixo reservado 🙂
+            </div>
+            <span class="flex items-center gap-1.5 self-center rounded-full border border-pn-border bg-white px-2.5 py-0.5 text-[11.5px] text-pn-muted"><Lob still ticks={false} uid="p3c" color="orange" class="w-3.5" />marcou um horário</span>
+          </div>
+          <div class="absolute -right-6 -bottom-8 w-[120px]"><Lob still ticks={true} uid="p3b" color="blue" class="w-full" /></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href={APP_URL} class="btn-glossy inline-flex h-[52px] items-center justify-center rounded-full px-7 text-[17px]">Testar grátis</a>
+      <a href="#planos" class="inline-flex h-[52px] items-center justify-center rounded-full bg-surface-2 px-7 text-[17px] text-ink transition-colors hover:bg-[#dcebfb]">Ver planos</a>
+    </div>
+  </div>
+</section>

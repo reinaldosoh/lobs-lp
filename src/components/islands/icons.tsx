@@ -135,3 +135,35 @@ export function WhatsAppIcon({ class: cls }: IconProps) {
     </svg>
   );
 }
+
+export const Star = lucide("star", [
+  ["polygon", { points: "12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" }],
+]);
+export const Hourglass = lucide("hourglass", [
+  ["path", { d: "M5 22h14" }],
+  ["path", { d: "M5 2h14" }],
+  ["path", { d: "M17 22v-4.172a2 2 0 0 0-.586-1.414L12 12l-4.414 4.414A2 2 0 0 0 7 17.828V22" }],
+  ["path", { d: "M7 2v4.172a2 2 0 0 0 .586 1.414L12 12l4.414-4.414A2 2 0 0 0 17 6.172V2" }],
+]);
+export const Trophy = lucide("trophy", [
+  ["path", { d: "M6 9H4.5a2.5 2.5 0 0 1 0-5H6" }],
+  ["path", { d: "M18 9h1.5a2.5 2.5 0 0 0 0-5H18" }],
+  ["path", { d: "M4 22h16" }],
+  ["path", { d: "M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22" }],
+  ["path", { d: "M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22" }],
+  ["path", { d: "M18 2H6v7a6 6 0 0 0 12 0V2Z" }],
+]);
+export const PanelRight = lucide("panel-right", [
+  ["rect", { width: "18", height: "18", x: "3", y: "3", rx: "2" }],
+  ["path", { d: "M15 3v18" }],
+]);
+export const ChevronDown = lucide("chevron-down", [["path", { d: "m6 9 6 6 6-6" }]]);
+export const ArrowLeft = lucide("arrow-left", [
+  ["path", { d: "m12 19-7-7 7-7" }],
+  ["path", { d: "M19 12H5" }],
+]);
+export const MoreHorizontal = lucide("ellipsis", [
+  ["circle", { cx: "12", cy: "12", r: "1" }],
+  ["circle", { cx: "19", cy: "12", r: "1" }],
+  ["circle", { cx: "5", cy: "12", r: "1" }],
+]);

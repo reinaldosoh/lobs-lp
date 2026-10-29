@@ -71,3 +71,30 @@
 @media (prefers-reduced-motion: reduce) {
   .lob-float, .scroll-progress, .reveal-blur { animation: none; }
 }
+html{scroll-padding-top:84px;scroll-behavior:smooth}
+html,body{overflow-x:clip;max-width:100%}
+
+/* Faixa de cartões que passa sozinha, em loop contínuo (sem voltar ao início). */
+@keyframes faixa {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.faixa {
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+.faixa-trilho {
+  display: flex;
+  width: max-content;
+  animation: faixa 50s linear infinite;
+}
+.faixa:hover .faixa-trilho {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .faixa-trilho {
+    animation: none;
+  }
+}

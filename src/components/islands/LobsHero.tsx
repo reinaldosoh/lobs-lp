@@ -142,6 +142,7 @@ export default function LobsHero({ children }: { children?: ComponentChildren })
         box.style.marginBottom = `${-(1 - scale) * box.offsetHeight}px`;
         chatRef.current.style.transform = `translateY(${mix(H, 0, chatIn)}px)`;
         chatRef.current.style.opacity = String(clamp(chatIn * 2));
+        chatRef.current.style.pointerEvents = chatIn > 0.5 ? "auto" : "none";
       }
       const cb = box?.getBoundingClientRect();
 
@@ -252,12 +253,12 @@ export default function LobsHero({ children }: { children?: ComponentChildren })
         <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(45%_40%_at_50%_100%,rgba(90,182,255,0.22),transparent),radial-gradient(30%_30%_at_10%_90%,rgba(255,138,15,0.10),transparent),radial-gradient(30%_30%_at_90%_90%,rgba(154,76,245,0.10),transparent)]" />
 
         {/* 1. headline */}
-        <div ref={heroRef} class="absolute inset-x-0 top-0 flex h-[64%] flex-col items-center justify-center px-4 pt-16 text-center md:px-6">
+        <div ref={heroRef} class="absolute inset-x-0 top-0 flex h-[64%] max-sm:h-[70%] flex-col items-center justify-center px-4 pt-16 text-center md:px-6">
           {children}
         </div>
 
         {/* 2. the sentence */}
-        <div class="absolute inset-0 flex items-center justify-center px-4 md:px-6">
+        <div class="pointer-events-none absolute inset-0 flex items-center justify-center px-4 md:px-6">
           <p
             ref={textRef}
             class="max-w-[1000px] text-center text-[28px] leading-[1.4] font-medium tracking-[-0.02em] opacity-0 sm:text-[40px] md:text-[54px] md:leading-[1.28]"
@@ -295,7 +296,7 @@ export default function LobsHero({ children }: { children?: ComponentChildren })
         </div>
 
         {/* 3. the chat, with the lobs around it */}
-        <div class="absolute inset-0 z-10 flex flex-col items-center justify-center px-4 pt-16 md:px-6">
+        <div class="pointer-events-none absolute inset-0 z-10 flex flex-col items-center justify-center px-4 pt-16 md:px-6">
           <div ref={chatRef} class="flex w-full flex-col items-center opacity-0">
             <p class="mb-24 text-center text-[15px] text-muted min-[1100px]:mb-8 md:text-[17px]">
               Veja os lobs trabalhando numa conversa de verdade no WhatsApp

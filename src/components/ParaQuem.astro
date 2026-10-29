@@ -1,0 +1,44 @@
+---
+import Lob from "./islands/Lob";
+import { APP_URL } from "../site";
+
+const nichos = [
+  { cor: "green", nome: "Clínicas e saúde", texto: "Agenda consultas, confirma horário, reduz faltas e acolhe o paciente. Do consultório ao psicólogo que atende sozinho." },
+  { cor: "orange", nome: "Imobiliárias", texto: "Responde o interessado na hora, qualifica o lead e marca a visita antes que ele procure outro anúncio." },
+  { cor: "blue", nome: "Escolas e cursos", texto: "Tira dúvidas de pais e alunos, apresenta turmas e valores, agenda aula experimental e cuida da matrícula." },
+  { cor: "pink", nome: "Lojas e e-commerce", texto: "Atende, manda catálogo, recupera carrinho abandonado e envia o link de pagamento com o Pix." },
+  { cor: "purple", nome: "Serviços e orçamentos", texto: "Monta o orçamento, envia a proposta e faz o follow-up até o cliente fechar. De reforma a oficina." },
+  { cor: "blue", nome: "Advocacia e contabilidade", texto: "Informa andamento, recolhe documentos, marca reunião e cobra no prazo, em linguagem simples." },
+  { cor: "pink", nome: "Beleza e estética", texto: "Agenda, remarca e lembra o horário, e chama de volta quem sumiu para o retorno." },
+  { cor: "orange", nome: "Academias e estúdios", texto: "Reserva aula, reativa aluno parado e renova plano, direto no WhatsApp." },
+] as const;
+---
+<section id="para-quem" class="px-4 py-20 md:px-6 md:py-24">
+  <div class="mx-auto max-w-[1100px]">
+    <div class="mx-auto max-w-[780px] text-center">
+      <h2 class="h-section">Feito para negócios que vivem de atender bem</h2>
+      <p class="mt-4 text-[16px] leading-[26px] text-ink/75 md:text-[18px] md:leading-[29px]">
+        O lobs não é um assistente pessoal: é uma equipe de agentes de IA que cuida do WhatsApp da sua empresa, seja ela uma clínica com vários atendentes ou um profissional que atende sozinho.
+      </p>
+    </div>
+  </div>
+  <div class="faixa mt-12" aria-label="Tipos de negócio atendidos">
+    <div class="faixa-trilho">
+      {[0, 1].map((rep) => nichos.map((n, i) => (
+        <div class="mr-3 flex w-[270px] shrink-0 flex-col rounded-3xl border border-line bg-surface p-5 sm:w-[300px]" aria-hidden={rep === 1 ? "true" : undefined}>
+          <Lob still ticks={false} uid={`pq-${rep}-${i}`} color={n.cor} class="w-14" />
+          <h3 class="mt-3 text-[17px] font-medium">{n.nome}</h3>
+          <p class="mt-1.5 text-[14px] leading-[22px] text-ink/75">{n.texto}</p>
+        </div>
+      )))}
+    </div>
+  </div>
+  <div class="mx-auto max-w-[1100px]">
+    <p class="mx-auto mt-8 max-w-[680px] text-center text-[16px] leading-[26px] text-ink/75">
+      Se o seu negócio atende, vende ou agenda pelo WhatsApp, os lobs são para você.
+    </p>
+    <div class="mt-6 flex justify-center">
+      <a href={APP_URL} class="btn-glossy inline-flex h-[52px] items-center justify-center rounded-full px-7 text-[17px]">Testar grátis</a>
+    </div>
+  </div>
+</section>
