@@ -28,7 +28,7 @@ const nichos = [
     <div class="faixa-trilho">
       {[0, 1].map((rep) => nichos.map((n, i) => (
         <div class="mr-3 flex w-[270px] shrink-0 flex-col rounded-3xl border border-line bg-surface p-5 sm:w-[300px]" aria-hidden={rep === 1 ? "true" : undefined}>
-          <span class="block w-14" data-lob-slot={i < 5 ? n.cor : undefined} data-rep={rep}><Lob still ticks uid={`pq-${rep}-${i}`} color={n.cor} class="w-full" /></span>
+          <span class="block w-14" data-lob-slot={n.cor} data-rep={rep}><Lob still ticks uid={`pq-${rep}-${i}`} color={n.cor} class="w-full" /></span>
           <h3 class="mt-3 text-[17px] font-medium">{n.nome}</h3>
           <p class="mt-1.5 text-[14px] leading-[22px] text-ink/75">{n.texto}</p>
         </div>
