@@ -33,7 +33,7 @@ const PLANOS: Plano[] = [
 ];
 
 export default function Planos({ notaComIa }: { notaComIa?: string }) {
-  const [ciclo, setCiclo] = useState<Ciclo>("mensal");
+  const [ciclo, setCiclo] = useState<Ciclo>("anual");
   return (
     <div>
       <div class="mx-auto flex w-fit rounded-full border border-line bg-surface p-1 text-[14px]" role="group" aria-label="Cobrança">
