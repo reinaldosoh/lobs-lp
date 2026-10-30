@@ -6,18 +6,18 @@ import type { Item } from "../variantes";
 // Quatro cartões lado a lado. `perda` mostra os lobs apagados (o que acontece sem eles).
 const { id, titulo, itens, cta, perda = false } = Astro.props as { id: string; titulo: string; itens: Item[]; cta?: string; perda?: boolean };
 const CORES = ["blue", "green", "orange", "pink"] as const;
-// Sem `perda`, a seção recebe os lobs que descem do topo (LobsViagem): um em cada cartão e o roxo no título.
+// Sem `perda`, a seção recebe os lobs que descem do topo (LobsViagem): um em cada cartão e o roxo sentado na borda do último.
 ---
 <section id={id} class="px-4 py-20 md:px-6 md:py-24">
   <div class="mx-auto max-w-[1100px]" data-lob-pouso={perda ? undefined : ""}>
-    {!perda && <span class="mx-auto mb-4 block w-12" data-lob-slot="purple"><Lob still ticks uid={`${id}-roxo`} color="purple" class="w-full" /></span>}
     <h2 class="h-section mx-auto max-w-[780px] text-center">{titulo}</h2>
     <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
       {itens.map((it, i) => (
-        <div class={`flex flex-col rounded-3xl border p-6 ${perda ? "border-line bg-white" : "border-line bg-surface"}`}>
+        <div class={`relative flex flex-col rounded-3xl border p-6 ${perda ? "border-line bg-white" : "border-line bg-surface"}`}>
           <span class="block w-12" data-lob-slot={perda ? undefined : CORES[i]}>
             {perda ? <Lob still ticks={false} outline strokeWidth={1.2} uid={`${id}-${i}`} color={CORES[i]} class="w-full opacity-80" /> : <Lob still ticks uid={`${id}-${i}`} color={CORES[i]} class="w-full" />}
           </span>
+          {!perda && i === itens.length - 1 && <span class="absolute -top-[22px] right-6 block w-11" data-lob-slot="purple"><Lob still ticks uid={`${id}-roxo`} color="purple" class="w-full" /></span>}
           <h3 class="mt-4 text-[17px] leading-[24px] font-medium">{it.titulo}</h3>
           <p class="mt-1.5 text-[15px] leading-[23px] text-ink/75">{it.texto}</p>
         </div>
