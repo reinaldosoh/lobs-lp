@@ -9,6 +9,6 @@ import Planos from "./islands/Planos";
       <h2 class="h-section">{p.titulo}</h2>
       <p class="mt-4 text-[16px] leading-[26px] text-muted md:text-[18px] md:leading-[29px]">{p.subtitulo}</p>
     </div>
-    <div class="mt-10"><Planos notaComIa={p.notaComIa} client:visible={{ rootMargin: `400px` }} /></div>
+    <div class="mt-10"><Planos notaComIa={p.notaComIa} client:load /></div>
   </div>
 </section>
