@@ -7,6 +7,8 @@ type Ciclo = "mensal" | "anual";
 
 type Plano = {
   nome: string;
+  /** Código do plano no checkout (app.lobsbot.com.br/assinar?plano=<codigo>-<ciclo>). */
+  codigo: string;
   desc: string;
   destaque?: boolean;
   mensal: string;
@@ -17,6 +19,7 @@ type Plano = {
 const PLANOS: Plano[] = [
   {
     nome: "Essencial",
+    codigo: "essencial",
     desc: "O painel do lobs para a sua equipe atender.",
     mensal: "96",
     anual: { parcelas: "39,90", pix: "386" },
@@ -24,6 +27,7 @@ const PLANOS: Plano[] = [
   },
   {
     nome: "Com IA",
+    codigo: "lobs-ia",
     desc: "Tudo do Essencial, com os lobs atendendo por você.",
     destaque: true,
     mensal: "146",
@@ -92,7 +96,7 @@ export default function Planos({ notaComIa }: { notaComIa?: string }) {
               <a href={APP_URL} class="btn-glossy inline-flex h-12 items-center justify-center rounded-full px-6 text-[16px]">
                 Testar grátis
               </a>
-              <a href={APP_URL} class="inline-flex h-12 items-center justify-center rounded-full bg-surface-2 px-6 text-[16px] text-ink transition-colors hover:bg-[#dcebfb]">
+              <a href={`${APP_URL}/assinar?plano=${p.codigo}-${ciclo}`} class="inline-flex h-12 items-center justify-center rounded-full bg-surface-2 px-6 text-[16px] text-ink transition-colors hover:bg-[#dcebfb]">
                 Assinar {p.nome}
               </a>
             </div>
