@@ -1,5 +1,8 @@
 ---
 import { SITE_URL } from "../site";
+import type { Variante } from "../variantes";
+
+const { variante = "a" } = Astro.props as { variante?: Variante };
 import "../styles/global.css";
 import "../styles/tailwind.css";
 import "../styles/lobs.css";
@@ -11,12 +14,14 @@ const ogDescription = "Agentes de IA que falam a favor da sua empresa. Nenhum cl
 const ogImage = new URL("/og-lobs.jpg", SITE_URL).href;
 ---
 <!doctype html>
-<html lang="pt-BR" class="T19VSG_variable _8Li5zG_variable h-full antialiased">
+<html lang="pt-BR" data-variante={variante} class="T19VSG_variable _8Li5zG_variable h-full antialiased">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={SITE_URL + "/"} />
+    {variante === "b" && <meta name="robots" content="noindex" />}
     <meta property="og:title" content="lobs" />
     <meta property="og:description" content={ogDescription} />
     <meta property="og:locale" content="pt_BR" />
@@ -42,6 +47,14 @@ const ogImage = new URL("/og-lobs.jpg", SITE_URL).href;
   <body class="min-h-full bg-bg text-ink">
     <slot />
     <script is:inline>
+      // Marca a variante do teste A/B nos links do app, para ligar o cadastro à página que o trouxe.
+      document.addEventListener("click", (e) => {
+        const a = e.target.closest && e.target.closest('a[href^="https://app.lobsbot.com.br"]');
+        if (!a) return;
+        const u = new URL(a.href);
+        u.searchParams.set("v", document.documentElement.dataset.variante);
+        a.href = u.href;
+      }, true);
       if ("serviceWorker" in navigator) window.addEventListener("load", () => navigator.serviceWorker.register("/sw.js"));
     </script>
   </body>

@@ -1,0 +1,10 @@
+---
+import Calculadora from "./islands/Calculadora";
+---
+<section id="calculadora" class="px-4 py-20 md:px-6 md:py-24">
+  <div class="mx-auto max-w-[1000px]">
+    <h2 class="h-section text-center">Quanto isso custa para você por mês?</h2>
+    <p class="mx-auto mt-4 max-w-[560px] text-center text-[16px] leading-[26px] text-muted md:text-[18px] md:leading-[29px]">Preencha com os números do seu negócio. A conta é uma estimativa.</p>
+    <div class="mt-10"><Calculadora client:visible={{ rootMargin: `400px` }} /></div>
+  </div>
+</section>

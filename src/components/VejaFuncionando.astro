@@ -1,0 +1,50 @@
+---
+import { siWhatsapp } from "simple-icons";
+import Lob from "./islands/Lob";
+import { DEMO_WHATSAPP_URL } from "../site";
+import { COPY, type Variante } from "../variantes";
+
+const { v } = Astro.props as { v: Variante };
+const d = COPY[v].demo;
+// Conversa de exemplo ao lado do botão.
+const conversa =
+  v === "a"
+    ? [
+        { de: "cliente", t: "Oi! Quanto custa a limpeza de pele?" },
+        { de: "lob", t: "Oi! A limpeza de pele sai R$ 180 e dura 1h. Tenho quinta às 14h ou sexta às 10h. Qual fica melhor?" },
+        { de: "cliente", t: "Sexta às 10h" },
+        { de: "lob", t: "Pronto, reservado! Te mando um lembrete na quinta 🙂" },
+      ]
+    : [
+        { de: "cliente", t: "Gostei, mas vou pensar" },
+        { de: "lob", t: "Claro! Quer que eu segure o horário de quinta enquanto você decide? Te chamo amanhã às 10h para confirmar." },
+        { de: "nota", t: "dia seguinte, 10h" },
+        { de: "lob", t: "Bom dia! Passando para saber: mantenho seu horário de quinta?" },
+      ];
+---
+<section id="demo" class="px-4 py-20 md:px-6 md:py-24">
+  <div class="mx-auto grid max-w-[1100px] items-center gap-8 overflow-hidden rounded-3xl border border-line bg-[radial-gradient(90%_70%_at_0%_100%,#8CC8FA_0%,transparent_60%),radial-gradient(80%_70%_at_100%_0%,#D6F4FF_0%,transparent_60%),linear-gradient(160deg,#EAF6FF_0%,#BFE2FF_55%,#93CBF8_100%)] p-6 sm:p-10 md:grid-cols-2 md:p-14">
+    <div>
+      <h2 class="h-section text-balance">{d.titulo}</h2>
+      <p class="mt-4 text-[16px] leading-[26px] text-ink/75 md:text-[18px] md:leading-[29px]">{d.texto}</p>
+      <a href={DEMO_WHATSAPP_URL} class="btn-glossy mt-7 inline-flex h-[52px] w-full items-center justify-center gap-2 rounded-full px-7 text-[17px] sm:w-auto"><svg viewBox="0 0 24 24" class="size-5" fill="currentColor" aria-hidden="true"><path d={siWhatsapp.path} /></svg>Abrir no WhatsApp</a>
+    </div>
+    <div class="relative">
+      <div class="flex flex-col gap-2 rounded-3xl border border-pn-border bg-pn-chat p-4 shadow-[0_24px_60px_-28px_rgba(11,27,46,0.45)] sm:p-5">
+        {conversa.map((m) =>
+          m.de === "nota" ? (
+            <span class="self-center rounded-full bg-white/80 px-2.5 py-0.5 text-[11.5px] text-pn-muted">{m.t}</span>
+          ) : m.de === "cliente" ? (
+            <div class="max-w-[80%] self-start rounded-[18px] rounded-tl-[6px] bg-white px-3.5 py-2 text-[14px] shadow-[0_1px_1px_rgba(11,27,46,0.08)]">{m.t}</div>
+          ) : (
+            <div class="max-w-[85%] self-end rounded-[18px] rounded-tr-[6px] border border-pn-brand/20 bg-gradient-to-b from-[#e6f1ff] to-[#d8e9ff] px-3.5 py-2 text-[14px] shadow-[0_1px_1px_rgba(11,27,46,0.08)]">
+              <span class="mb-0.5 flex items-center gap-1 text-[11px] font-semibold text-pn-brand"><Lob still ticks={false} uid={`demo-${v}`} class="w-3.5" />lob</span>
+              {m.t}
+            </div>
+          ),
+        )}
+      </div>
+      <div class="absolute -top-9 -right-2 w-[86px]"><Lob still ticks uid={`demo-peek-${v}`} color="green" class="w-full" /></div>
+    </div>
+  </div>
+</section>

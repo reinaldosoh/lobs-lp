@@ -29,7 +29,8 @@ export default function LobsViagem() {
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const hero = document.getElementById("lobs-hero");
-    const faixa = document.querySelector<HTMLElement>(".faixa");
+    // onde os lobs pousam: a primeira seção marcada com data-lob-pouso ou, sem ela, a faixa de "Para quem"
+    const faixa = document.querySelector<HTMLElement>("[data-lob-pouso]") ?? document.querySelector<HTMLElement>(".faixa");
     if (!hero || !faixa) return;
 
     const slots = (c: LobColor) => [...document.querySelectorAll<HTMLElement>(`[data-lob-slot="${c}"]`)];
@@ -68,8 +69,11 @@ export default function LobsViagem() {
           continue;
         }
         // o cartão deste lob mais perto do meio da tela (a faixa tem duas cópias de cada)
-        const slot = slots(c)
-          .map((el) => ({ el, d: Math.abs(el.getBoundingClientRect().left + 28 - vw / 2) }))
+        const slot = [...faixa.querySelectorAll<HTMLElement>(`[data-lob-slot="${c}"]`)]
+          .map((el) => {
+            const b = el.getBoundingClientRect();
+            return { el, d: Math.hypot(b.left + b.width / 2 - vw / 2, b.top + b.height / 2 - vh / 2) };
+          })
           .sort((a, b) => a.d - b.d)[0]?.el;
         let x = 0;
         let y = 0;
@@ -102,7 +106,7 @@ export default function LobsViagem() {
           if (q >= 1 && slot && faixaNaTela) {
             const sr = slot.getBoundingClientRect();
             // só se joga quando o cartão dele está inteiro à vista (fora da borda esmaecida da faixa)
-            if (sr.left > vw * 0.08 && sr.right < vw * 0.92) {
+            if (sr.left > vw * 0.08 && sr.right < vw * 0.92 && sr.top > header && sr.bottom < vh * 0.92) {
               e.fase = "voando";
               e.inicio = now;
               e.de = { x, y, w, r };

@@ -1,0 +1,36 @@
+---
+import Lob from "./islands/Lob";
+import { COPY, DEPOIMENTOS, type Variante } from "../variantes";
+
+const { v } = Astro.props as { v: Variante };
+const iniciais = (n: string) => n.split(" ").map((p) => p[0]).slice(0, 2).join("");
+const FUNDO = { pink: "from-[#ff7ac8] to-[#e0287f]", orange: "from-[#ffb057] to-[#f26a0f]", purple: "from-[#c08cff] to-[#8a3df0]" };
+---
+<section id="depoimentos" class="px-4 py-20 md:px-6 md:py-24">
+  <div class="mx-auto max-w-[1100px]">
+    <h2 class="h-section text-center">{COPY[v].depoimentos.titulo}</h2>
+    <div class="mt-12 grid gap-4 md:grid-cols-3">
+      {DEPOIMENTOS.map((d, i) => (
+        <figure class="relative flex flex-col rounded-3xl border border-line bg-surface p-6 sm:p-7">
+          <span class="absolute -top-5 right-6 w-11"><Lob still ticks uid={`dep-${i}`} color={d.cor} class="w-full" /></span>
+          <blockquote class="flex-1 text-[16px] leading-[26px] text-ink">“{d.frase}”</blockquote>
+          <figcaption class="mt-6 flex items-center gap-3">
+            {d.foto ? (
+              <img src={d.foto} alt={d.nome} width="48" height="48" loading="lazy" class="size-12 rounded-full object-cover" />
+            ) : (
+              <span class={`flex size-12 shrink-0 items-center justify-center rounded-full bg-gradient-to-br text-[16px] font-semibold text-white ${FUNDO[d.cor]}`}>{iniciais(d.nome)}</span>
+            )}
+            <span class="flex flex-col">
+              <b class="text-[15px] font-medium">{d.nome}</b>
+              {d.site ? (
+                <a href={d.site} target="_blank" rel="noopener" class="text-[14px] text-muted underline decoration-ink/20 underline-offset-4 hover:text-ink">{d.papel}</a>
+              ) : (
+                <span class="text-[14px] text-muted">{d.papel}</span>
+              )}
+            </span>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>

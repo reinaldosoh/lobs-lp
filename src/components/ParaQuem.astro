@@ -1,4 +1,6 @@
 ---
+import { COPY, type Variante } from "../variantes";
+const { titulo } = COPY[(Astro.props as { v: Variante }).v].paraQuem;
 import Lob from "./islands/Lob";
 import LobsViagem from "./islands/LobsViagem";
 import { APP_URL } from "../site";
@@ -18,7 +20,7 @@ const nichos = [
   <LobsViagem client:load />
   <div class="mx-auto max-w-[1100px]">
     <div class="mx-auto max-w-[780px] text-center">
-      <h2 class="h-section">Feito para negócios que vivem de atender bem</h2>
+      <h2 class="h-section">{titulo}</h2>
       <p class="mt-4 text-[16px] leading-[26px] text-ink/75 md:text-[18px] md:leading-[29px]">
         O lobs não é um assistente pessoal: é uma equipe de agentes de IA que cuida do WhatsApp da sua empresa, seja ela uma clínica com vários atendentes ou um profissional que atende sozinho.
       </p>

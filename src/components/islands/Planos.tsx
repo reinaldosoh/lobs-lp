@@ -32,8 +32,8 @@ const PLANOS: Plano[] = [
   },
 ];
 
-export default function Planos() {
-  const [ciclo, setCiclo] = useState<Ciclo>("anual");
+export default function Planos({ notaComIa }: { notaComIa?: string }) {
+  const [ciclo, setCiclo] = useState<Ciclo>("mensal");
   return (
     <div>
       <div class="mx-auto flex w-fit rounded-full border border-line bg-surface p-1 text-[14px]" role="group" aria-label="Cobrança">
@@ -43,9 +43,10 @@ export default function Planos() {
             type="button"
             aria-pressed={ciclo === c}
             onClick={() => setCiclo(c)}
-            class={`rounded-full px-5 py-2 capitalize transition-colors ${ciclo === c ? "bg-ink text-white" : "text-muted"}`}
+            class={`rounded-full px-5 py-2 transition-colors ${ciclo === c ? "bg-ink text-white" : "text-muted"}`}
           >
-            {c}
+            <span class="capitalize">{c}</span>
+            {c === "anual" && <span class={`ml-1.5 text-[12px] ${ciclo === c ? "text-white/75" : "text-[#16a34a]"}`}>economize até 66%</span>}
           </button>
         ))}
       </div>
@@ -103,6 +104,7 @@ export default function Planos() {
                 </li>
               ))}
             </ul>
+            {p.destaque && notaComIa && <p class="mt-6 rounded-2xl bg-[#e7f9ee] px-4 py-3 text-[15px] font-medium text-[#13703a]">{notaComIa}</p>}
           </div>
         ))}
       </div>

@@ -1,0 +1,58 @@
+---
+import Base from "../layouts/Base.astro";
+import Header from "./Header.astro";
+import Hero from "./Hero.astro";
+import Beneficios from "./Beneficios.astro";
+import Calculadora from "./Calculadora.astro";
+import VejaFuncionando from "./VejaFuncionando.astro";
+import Passos from "./Passos.astro";
+import ParaQuem from "./ParaQuem.astro";
+import Plataforma from "./Plataforma.astro";
+import Conectados from "./Conectados.astro";
+import Plugin from "./Plugin.astro";
+import Depoimentos from "./Depoimentos.astro";
+import Planos from "./Planos.astro";
+import Faq from "./Faq.astro";
+import Cta from "./Cta.astro";
+import Footer from "./Footer.astro";
+import { COPY, type Variante } from "../variantes";
+
+// A mesma LP nas duas variantes do teste A/B; muda o texto e a ordem das seções (ver variantes.ts).
+const { v } = Astro.props as { v: Variante };
+const c = COPY[v];
+---
+<Base variante={v}>
+  <Header />
+  <main>
+    <Hero v={v} />
+    {v === "a" ? (
+      <>
+        <Beneficios id="o-que-muda" titulo={c.beneficios.titulo} itens={c.beneficios.itens} cta={c.beneficios.cta} />
+        <VejaFuncionando v={v} />
+        <Passos v={v} />
+        <ParaQuem v={v} />
+        <Plataforma v={v} />
+        <Conectados />
+        <Plugin />
+        <Depoimentos v={v} />
+      </>
+    ) : (
+      <>
+        <Beneficios id="problema" titulo={c.problema!.titulo} itens={c.problema!.itens} perda />
+        <Calculadora />
+        <Beneficios id="solucao" titulo={c.beneficios.titulo} itens={c.beneficios.itens} />
+        <VejaFuncionando v={v} />
+        <Passos v={v} />
+        <Depoimentos v={v} />
+        <ParaQuem v={v} />
+        <Plataforma v={v} />
+        <Conectados />
+        <Plugin />
+      </>
+    )}
+    <Planos v={v} />
+    <Faq v={v} />
+    <Cta v={v} />
+  </main>
+  <Footer />
+</Base>
