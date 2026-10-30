@@ -1,7 +1,7 @@
 ---
 import { siWhatsapp } from "simple-icons";
 import Lob from "./islands/Lob";
-import { DEMO_WHATSAPP_URL } from "../site";
+import { DEMO_WHATSAPP_URL, DEMO_PRONTO } from "../site";
 import { COPY, type Variante } from "../variantes";
 
 const { v } = Astro.props as { v: Variante };
@@ -27,7 +27,7 @@ const conversa =
     <div>
       <h2 class="h-section text-balance">{d.titulo}</h2>
       <p class="mt-4 text-[16px] leading-[26px] text-ink/75 md:text-[18px] md:leading-[29px]">{d.texto}</p>
-      <a href={DEMO_WHATSAPP_URL} class="btn-glossy mt-7 inline-flex h-[52px] w-full items-center justify-center gap-2 rounded-full px-7 text-[17px] sm:w-auto"><svg viewBox="0 0 24 24" class="size-5" fill="currentColor" aria-hidden="true"><path d={siWhatsapp.path} /></svg>Abrir no WhatsApp</a>
+      {DEMO_PRONTO && <a href={DEMO_WHATSAPP_URL} class="btn-glossy mt-7 inline-flex h-[52px] w-full items-center justify-center gap-2 rounded-full px-7 text-[17px] sm:w-auto"><svg viewBox="0 0 24 24" class="size-5" fill="currentColor" aria-hidden="true"><path d={siWhatsapp.path} /></svg>Abrir no WhatsApp</a>}
     </div>
     <div class="relative">
       <div class="flex flex-col gap-2 rounded-3xl border border-pn-border bg-pn-chat p-4 shadow-[0_24px_60px_-28px_rgba(11,27,46,0.45)] sm:p-5">

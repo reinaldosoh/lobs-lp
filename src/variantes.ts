@@ -28,6 +28,7 @@ export type Copy = {
 
 // Perguntas novas do documento do teste, nas duas variantes.
 const FAQ_NOVAS: Pergunta[] = [
+  { p: "Meu número pode ser bloqueado pelo WhatsApp?", r: "Não, pois não disparamos campanhas de envio em massa. Somos responsáveis pelo atendimento do cliente que inicia o contato com sua empresa." },
   { p: "O cliente percebe que é uma IA?", r: "O lob se apresenta como o assistente da sua marca. Nada é prometido fora das regras que você definir." },
   { p: "Preciso saber configurar alguma coisa?", r: "Não. Você conta sobre sua empresa em texto simples e os lobs aprendem." },
 ];

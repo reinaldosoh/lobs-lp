@@ -5,6 +5,8 @@ export const TERMS_URL = "https://app.lobsbot.com.br/termos";
 export const PRIVACY_URL = "https://app.lobsbot.com.br/privacidade";
 // Link do WhatsApp de teste ("Conversar com os lobs"). Cole aqui o link (wa.me/...) quando o Reinaldo passar.
 export const DEMO_WHATSAPP_URL = "#conversar-com-os-lobs";
+// Sem link real, os botões que abrem o WhatsApp de teste ficam escondidos.
+export const DEMO_PRONTO = DEMO_WHATSAPP_URL.startsWith("https://");
 // Contato e empresa, exibidos no rodapé (exigência de aprovação do cadastro).
 export const CONTACT_EMAIL = "contato@lobsbot.com.br";
 // WhatsApp de contato: número com DDI e DDD, só dígitos (ex.: "5531999999999"). Vazio esconde o link.
