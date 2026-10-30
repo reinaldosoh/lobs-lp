@@ -8,7 +8,7 @@ const brl = (v: number) => v.toLocaleString("pt-BR", { style: "currency", curren
 const num = (s: string) => Math.max(0, Number(s.replace(/\D/g, "")) || 0);
 
 export default function Calculadora() {
-  const [contatos, setContatos] = useState("30");
+  const [contatos, setContatos] = useState("10");
   const [valor, setValor] = useState("150");
   const [perda, setPerda] = useState(20);
   const total = Math.round(num(contatos) * 4.3 * (perda / 100) * num(valor));

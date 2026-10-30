@@ -277,7 +277,9 @@ export default function LobsHero({ children }: { children?: ComponentChildren })
                       textSlots.current[r.color] = el;
                     }}
                     class="inline-block h-[0.9em] w-[1.15em] align-[-0.14em]"
-                  />{" "}
+                  >
+                    <span class="sr-only">lob {r.area}</span>
+                  </span>{" "}
                   {r.verb}
                   {i < ROLES.length - 2 ? ", " : i === ROLES.length - 2 ? " " : ". "}
                 </span>

@@ -90,7 +90,7 @@ export default function PluginTabs() {
     <div class="grid items-stretch gap-4 lg:grid-cols-[1fr_1.15fr]">
       <div class="flex flex-col justify-center rounded-3xl border border-line bg-surface p-6 sm:p-10">
         <span class="inline-flex w-fit items-center gap-1.5 rounded-full bg-white px-3 py-1 text-[13px] font-medium text-[#1f7df5] ring-1 ring-line">
-          <Lob still ticks={false} uid="pl0" class="w-4" /> Em breve
+          <Lob still ticks={false} uid="pl0" class="w-4" /> Disponível
         </span>
         <h2 class="h-section mt-4 !text-left">Os lobs dentro do Claude e do ChatGPT</h2>
         <p class="mt-4 text-[16px] leading-[26px] text-ink/75 md:text-[18px] md:leading-[29px]">

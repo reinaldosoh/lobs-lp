@@ -129,8 +129,9 @@ export default function LobsStory() {
                     slotRefs.current[i] = el;
                   }}
                   class="inline-block h-[0.9em] w-[1.1em] align-[-0.12em]"
-                  aria-label={`lob ${role.area.toLowerCase()}`}
-                />{" "}
+                >
+                  <span class="sr-only">lob {role.area}</span>
+                </span>{" "}
                 {role.verb}
                 {i < ROLES.length - 2 ? ", " : i === ROLES.length - 2 ? " " : ". "}
               </span>
