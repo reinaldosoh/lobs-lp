@@ -178,33 +178,93 @@ const EMPRESA = {
   conversa com um negócio que usa o lobs, encaminhamos ao negócio, que é o controlador.
 </p>
 
-<h2>8. Google Agenda</h2>
+<h2>8. Dados do usuário do Google (Google Agenda)</h2>
 <p>
-  Se o seu negócio conectar o Google Agenda, o lobs acessa só as agendas que você escolher,
-  com a sua autorização na tela do Google, para duas coisas: (1) ler os eventos e as cores
-  deles para saber o que está ocupado e mostrar a agenda no painel, e (2) criar, mudar e
-  cancelar os eventos das consultas que o lob ou a sua equipe marcam. Para o lob decidir um
-  horário, só vão o início, o fim e o significado da cor; o título e a descrição dos eventos
-  nunca vão para a inteligência artificial.
+  Esta seção vale quando o seu negócio conecta uma conta Google ao lobs para usar o Google
+  Agenda. A conexão só acontece com a sua autorização na tela de permissão do Google, e você pode
+  desfazê-la a qualquer momento.
 </p>
 <p>
-  Não usamos os dados do Google para propaganda, não os vendemos, não os usamos para treinar
-  inteligência artificial e não os mostramos a ninguém fora da sua empresa. O uso e a
-  transferência de informações recebidas das APIs do Google pelo lobs seguem a{' '}
-  <a
-    href="https://developers.google.com/terms/api-services-user-data-policy"
-    target="_blank"
-    rel="noreferrer"
-    class="underline"
-  >
+  <b>Quais dados do Google acessamos:</b> o endereço de e-mail da conta Google conectada (para
+  mostrar qual conta está ligada); a lista das agendas da conta (para você escolher quais o lobs
+  usa); e, só nas agendas que você escolher, os eventos: título, descrição, data e hora de início
+  e de fim, cor, se é de dia inteiro e se aparece como "ocupado" ou "disponível". Não acessamos
+  Gmail, contatos, Drive nem nenhum outro dado da conta.
+</p>
+<p>
+  <b>Para que usamos:</b> (1) saber quais horários estão ocupados, para o atendente do lobs nunca
+  oferecer a um cliente um horário que não pode ser marcado; (2) mostrar a agenda no painel do
+  lobs para a equipe do seu negócio, com as mesmas cores; (3) criar, mudar e cancelar no Google
+  Agenda os eventos das consultas que o lobs ou a sua equipe marcam. Usamos esses dados só para
+  isso. Para decidir um horário, a inteligência artificial recebe apenas o início, o fim e o
+  significado da cor; o título e a descrição dos eventos nunca vão para a inteligência
+  artificial.
+</p>
+<p>
+  <b>Como guardamos e protegemos:</b> os eventos das agendas escolhidas ficam no banco de dados do
+  lobs, separados por empresa, e só pessoas da sua equipe com acesso ao painel os veem. A
+  autorização do Google (token) fica guardada cifrada (AES-256) e nunca aparece no painel. Toda a
+  comunicação usa HTTPS.
+</p>
+<p>
+  <b>Com quem compartilhamos:</b> com ninguém. Não vendemos, não alugamos, não usamos para
+  propaganda, não usamos para treinar modelos de inteligência artificial e não transferimos os
+  dados do Google a terceiros, exceto quando a lei obrigar. Pessoas do lobs só leem esses dados
+  com a sua autorização, para dar suporte, ou quando a lei exigir.
+</p>
+<p>
+  <b>Por quanto tempo e como apagar:</b> guardamos enquanto a conta Google estiver conectada. Ao
+  desconectar (em Agenda &gt; Configurações no painel, ou em
+  https://myaccount.google.com/permissions), o lobs revoga o acesso no Google e apaga na hora as
+  agendas do Google e os eventos delas que estavam no lobs. Nada é apagado no seu Google Agenda.
+  Você também pode pedir a exclusão pelo e-mail contato@soureino.com.
+</p>
+<p>
+  O uso e a transferência de informações recebidas das APIs do Google pelo lobs seguem a{' '}
+  <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noreferrer">
     Política de Dados do Usuário dos Serviços de API do Google
   </a>
   , incluindo os requisitos de Uso Limitado.
 </p>
+
+<h3>Google user data (Google Calendar), in English</h3>
 <p>
-  O acesso fica guardado cifrado. Você desconecta quando quiser em Agenda &gt; Configurações
-  (ou em myaccount.google.com/permissions): o lobs revoga o acesso no Google e apaga as
-  agendas do Google e os eventos delas que estavam aqui. Nada é apagado no seu Google Agenda.
+  <b>Data accessed:</b> the email address of the connected Google account; the list of its
+  calendars; and, only on the calendars the business selects, the events (title, description,
+  start and end time, color, all-day flag and busy/free status). No Gmail, Contacts, Drive or other
+  Google data is accessed.
+</p>
+<p>
+  <b>Use:</b> to know which times are busy so the lobs assistant never offers a customer an
+  unavailable time; to show the calendar, with the same colors, to the business's own team inside
+  the lobs dashboard; and to create, update and cancel the events of the appointments booked by
+  lobs or by the team. To pick a time, the AI receives only start, end and the meaning of the
+  color; event titles and descriptions are never sent to AI models.
+</p>
+<p>
+  <b>Storage and protection:</b> events are stored in the lobs database, isolated per business and
+  visible only to that business's team. The Google authorization token is stored encrypted
+  (AES-256) and is never shown in the dashboard. All traffic uses HTTPS.
+</p>
+<p>
+  <b>Sharing:</b> Google user data is not sold, rented, used for advertising, used to train AI
+  models, or transferred to third parties, except as required by law. lobs staff only read it with
+  the business's permission for support, or when required by law.
+</p>
+<p>
+  <b>Retention and deletion:</b> data is kept while the Google account is connected. Disconnecting
+  (Agenda &gt; Configurações in the dashboard, or https://myaccount.google.com/permissions) revokes
+  access at Google and immediately deletes the Google calendars and their events from lobs; nothing
+  is deleted from the user's Google Calendar. Deletion can also be requested at
+  contato@soureino.com.
+</p>
+<p>
+  lobs' use and transfer to any other app of information received from Google APIs will adhere to
+  the{' '}
+  <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noreferrer">
+    Google API Services User Data Policy
+  </a>
+  , including the Limited Use requirements.
 </p>
 
 <h2>9. Armazenamento no navegador e métricas</h2>
