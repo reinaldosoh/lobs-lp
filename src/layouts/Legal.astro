@@ -1,0 +1,57 @@
+---
+/**
+ * As páginas legais do site (termos e política de privacidade), em HTML de verdade: o Google (tela de
+ * permissão do Google Agenda) e os buscadores leem o texto sem rodar JavaScript. O texto é o mesmo de
+ * lobs/apps/web/src/rotas/legal.tsx: mudou lá, muda aqui (e a versão em VERSAO_DOS_TERMOS).
+ */
+import "../styles/global.css";
+import "../styles/tailwind.css";
+import "../styles/lobs.css";
+import Wordmark from "../components/Wordmark.astro";
+import { SITE_URL } from "../site";
+
+const { titulo, caminho, descricao } = Astro.props as {
+  titulo: string;
+  caminho: string;
+  descricao: string;
+};
+export const VERSAO = "2026-10-31.1";
+const [ano, mes, dia] = VERSAO.slice(0, 10).split("-");
+---
+<!doctype html>
+<html lang="pt-BR" class="h-full antialiased">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{titulo} · lobs</title>
+    <meta name="description" content={descricao} />
+    <link rel="canonical" href={SITE_URL + caminho} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body class="min-h-full bg-[#f6f9fe] px-4 py-10 text-[#1b2433]">
+    <div class="mx-auto w-full max-w-[760px]">
+      <a href="/" class="mb-6 inline-flex text-[28px] leading-none" aria-label="lobs"><Wordmark /></a>
+      <main class="rounded-[22px] border border-[#e3e9f2] bg-white p-6 md:p-10">
+        <h1 class="m-0 text-[26px] font-semibold tracking-[-0.02em]">{titulo}</h1>
+        <p class="mt-1 text-[13.5px] text-[#6b7a90]">Versão em vigor desde {dia}/{mes}/{ano}.</p>
+        <div class="legal mt-6 text-[15px] leading-relaxed text-[#3b4658]">
+          <slot />
+        </div>
+      </main>
+      <p class="mt-6 text-center text-[13px] text-[#6b7a90]">
+        <a href="/termos" class="hover:text-[#1b2433]">Termos de uso</a>
+        {" · "}
+        <a href="/privacidade" class="hover:text-[#1b2433]">Política de privacidade</a>
+        {" · "}
+        <a href="/" class="hover:text-[#1b2433]">lobsbot.com.br</a>
+      </p>
+    </div>
+    <style is:global>
+      .legal h2 { margin: 2rem 0 .5rem; font-size: 17px; font-weight: 600; color: #1b2433; }
+      .legal p { margin-top: .75rem; }
+      .legal ul { margin-top: .5rem; list-style: disc; padding-left: 1.25rem; }
+      .legal li { margin-top: .375rem; }
+      .legal a { text-decoration: underline; }
+    </style>
+  </body>
+</html>

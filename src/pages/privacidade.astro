@@ -1,0 +1,231 @@
+---
+import Legal from "../layouts/Legal.astro";
+const EMPRESA = {
+  nome: 'lobs',
+  razaoSocial: 'SOUREINO LTDA',
+  cnpj: '63.289.746/0001-87',
+  endereco:
+    'Rua Rio Grande do Norte, 1435, Sala 708, Pavimento 7, Savassi, Belo Horizonte/MG, CEP 30130-138',
+  contato: 'contato@soureino.com',
+  encarregado: 'Reinaldo F. Campos',
+  foro: 'Belo Horizonte/MG',
+};
+---
+<Legal titulo="Política de privacidade" caminho="/privacidade" descricao="Como o lobs trata dados pessoais (LGPD) e os dados do Google Agenda (Uso Limitado).">
+<p>
+  Esta política explica como o {EMPRESA.nome} ({EMPRESA.razaoSocial}, CNPJ {EMPRESA.cnpj})
+  trata dados pessoais, de acordo com a Lei Geral de Proteção de Dados (Lei 13.709/2018,
+  LGPD).
+</p>
+
+<h2>1. Dois papéis diferentes</h2>
+<ul>
+  <li>
+    <b>Dados da sua conta</b> (você, dono ou membro da equipe): o lobs é o <b>controlador</b>.
+  </li>
+  <li>
+    <b>Dados dos clientes do seu negócio</b> (quem fala com o seu WhatsApp): o seu negócio é o
+    controlador, e o lobs é o <b>operador</b> — trata esses dados só para prestar o
+    atendimento que você configurou. Cabe ao seu negócio informar os clientes e ter base legal
+    para atendê-los, inclusive para as mensagens de retomada (retorno combinado e follow-up),
+    que o lob só manda a quem já falou com o seu negócio e nunca a quem pediu para parar.
+  </li>
+</ul>
+
+<h2>2. Que dados coletamos</h2>
+<ul>
+  <li>
+    <b>Cadastro:</b> nome, e-mail, WhatsApp, senha (guardada só como hash) ou a sua conta
+    Google (nome e e-mail), o aceite destes termos com data e versão, e a sua escolha sobre
+    novidades. O WhatsApp do cadastro só serve para avisar você de conversas que precisam de
+    atenção se <b>você mesmo ligar</b> “Receber avisos no meu WhatsApp” (tela Equipe); o aviso
+    leva o nome do cliente e o link da conversa, e dá para desligar quando quiser.
+  </li>
+  <li>
+    <b>Do seu negócio:</b> o que você informa no onboarding (descrição, serviços, cardápio,
+    preços, horários, endereço, regras) e os arquivos que você envia (fotos e PDFs de tabela,
+    áudio do ditado), as listas de quem o lob atende ou não atende (número e apelido que você
+    informa, guardados cifrados) e, se você usar a IA da sua empresa, a chave de API ou o
+    acesso à assinatura do ChatGPT (guardados cifrados, nunca mostrados de volta).
+  </li>
+  <li>
+    <b>Das conversas no WhatsApp do seu negócio:</b> número, nome e foto do perfil do contato
+    (como o WhatsApp mostra), mensagens, reações, áudios, imagens, agendamentos e pedidos, e o
+    que a sua equipe registra sobre o cliente na ficha (etiquetas e notas internas, que o
+    cliente não vê).
+  </li>
+  <li>
+    <b>De uso:</b> registros técnicos (data, hora, IP, navegador) para segurança e para
+    corrigir erros, e métricas de uso do site e do painel: de onde você chegou (busca, link ou
+    direto), as páginas e seções vistas, os botões clicados, em que passo do cadastro e da
+    configuração está e quanto tempo levou, para melhorar a experiência. As métricas usam só
+    um identificador da conta, sem nome, e-mail, telefone nem o que você escreve.
+  </li>
+</ul>
+
+<h2>3. Para que usamos e com qual base legal</h2>
+<ul>
+  <li>
+    Criar e manter a conta, configurar e rodar o seu lob, cobrar — <b>execução de contrato</b>
+    .
+  </li>
+  <li>
+    Falar com você sobre a conta (ajuda para terminar o cadastro, avisos, segurança, cobrança)
+    — <b>execução de contrato</b> e <b>legítimo interesse</b>, como você autorizou ao aceitar.
+  </li>
+  <li>
+    Mandar novidades, dicas e ofertas — <b>consentimento</b> (a caixa opcional).
+  </li>
+  <li>
+    Segurança, prevenção a fraude e melhoria do serviço — <b>legítimo interesse</b>.
+  </li>
+  <li>
+    Guardar o que a lei exige — <b>obrigação legal</b>.
+  </li>
+</ul>
+<p>
+  Não vendemos dados pessoais e não usamos as conversas dos seus clientes para fazer
+  propaganda.
+</p>
+
+<h2>4. Com quem compartilhamos</h2>
+<p>Só com quem precisamos para o serviço funcionar, sob contrato e com sigilo:</p>
+<ul>
+  <li>
+    <b>Provedores de inteligência artificial</b>: OpenAI (Estados Unidos) e DeepSeek (China)
+    para gerar as respostas, Google Gemini e Anthropic (Estados Unidos) como reserva quando os
+    outros falham, e Groq (Estados Unidos) para transcrever áudios. Recebem só o trecho
+    necessário da conversa e do manual. As notas e etiquetas da equipe não vão para a IA.
+  </li>
+  <li>
+    <b>A IA da sua empresa</b>, se você escolher usá-la: as conversas vão para o provedor que
+    o seu negócio contratou (OpenAI, DeepSeek ou a assinatura do ChatGPT), na conta do seu
+    negócio. Esse provedor é contratado por você e segue o contrato dele com você.
+  </li>
+  <li>
+    <b>AbacatePay</b> (pagamentos, Brasil): nome, e-mail, CPF ou CNPJ e celular de quem paga,
+    para cobrar o plano. O cartão é digitado direto no formulário dela; o lobs guarda só um
+    código para cobrar a renovação, a bandeira e os 4 últimos dígitos, cifrados.
+  </li>
+  <li>
+    <b>Claude, ChatGPT ou outro app que você conectar</b> (conector em Integrações): só se
+    você conectar e permitir. O app lê, em seu nome e só para leitura, o resumo do
+    atendimento, as conversas e mensagens (sem telefone), a agenda, os funis, o follow-up e o
+    uso do mês das empresas da sua conta, para responder o que você perguntar. O que ele faz
+    com isso segue o contrato dele com você. Você desliga quando quiser em Integrações, e o
+    acesso acaba na hora.
+  </li>
+  <li>
+    <b>Hospedagem e banco de dados</b> (servidores contratados pelo lobs) e{' '}
+    <b>envio de e-mail</b> (Resend).
+  </li>
+  <li>
+    <b>PostHog</b> (métricas de uso do site e do painel): recebe só o identificador da conta e
+    os passos percorridos, sem dados de contato nem o conteúdo das respostas. O envio passa
+    pelo nosso servidor, sem o seu IP.
+  </li>
+  <li>
+    <b>Google</b>, se você entrar com a conta Google; <b>WhatsApp/Meta</b>, para as mensagens
+    trafegarem.
+  </li>
+  <li>
+    <b>Consultas de endereço</b> (ViaCEP e OpenStreetMap), com o CEP ou a localização que você
+    pedir para usar.
+  </li>
+  <li>Autoridades, quando a lei ou uma ordem judicial exigir.</li>
+</ul>
+<p>
+  Alguns desses provedores ficam fora do Brasil (Estados Unidos e China). Nesses casos a
+  transferência internacional segue as hipóteses do art. 33 da LGPD, com cláusulas contratuais
+  e medidas de segurança.
+</p>
+
+<h2>5. Por quanto tempo guardamos</h2>
+<ul>
+  <li>Dados da conta: enquanto ela existir.</li>
+  <li>
+    Dados de pagamento (quem pagou, valor, data, recibo): pelo prazo que a lei fiscal exige.
+  </li>
+  <li>
+    Conversas e mídias: enquanto o seu negócio usar o lobs, ou pelo prazo que você definir.
+  </li>
+  <li>
+    Ao encerrar a conta, apagamos ou anonimizamos em até 90 dias, menos o que a lei manda
+    guardar (por exemplo, registros de acesso por 6 meses e dados fiscais pelo prazo legal).
+  </li>
+</ul>
+
+<h2>6. Como protegemos</h2>
+<p>
+  Conexão sempre criptografada (HTTPS); telefones, chaves e segredos guardados cifrados no
+  banco; cada empresa só enxerga os próprios dados (isolamento no banco de dados); acesso
+  interno restrito e registrado. Se acontecer um incidente que traga risco a você, avisamos
+  você e a ANPD.
+</p>
+
+<h2>7. Seus direitos</h2>
+<p>Pela LGPD você pode, a qualquer momento:</p>
+<ul>
+  <li>confirmar se tratamos seus dados e ter acesso a eles;</li>
+  <li>corrigir dados incompletos ou errados;</li>
+  <li>pedir a portabilidade, a anonimização, o bloqueio ou a exclusão;</li>
+  <li>saber com quem compartilhamos;</li>
+  <li>retirar o consentimento das novidades (sem afetar o resto da conta);</li>
+  <li>se opor a um tratamento e pedir revisão de decisão automatizada.</li>
+</ul>
+<p>
+  Peça pelo e-mail {EMPRESA.contato}. Respondemos em até 15 dias. Se o pedido for sobre a
+  conversa com um negócio que usa o lobs, encaminhamos ao negócio, que é o controlador.
+</p>
+
+<h2>8. Google Agenda</h2>
+<p>
+  Se o seu negócio conectar o Google Agenda, o lobs acessa só as agendas que você escolher,
+  com a sua autorização na tela do Google, para duas coisas: (1) ler os eventos e as cores
+  deles para saber o que está ocupado e mostrar a agenda no painel, e (2) criar, mudar e
+  cancelar os eventos das consultas que o lob ou a sua equipe marcam. Para o lob decidir um
+  horário, só vão o início, o fim e o significado da cor; o título e a descrição dos eventos
+  nunca vão para a inteligência artificial.
+</p>
+<p>
+  Não usamos os dados do Google para propaganda, não os vendemos, não os usamos para treinar
+  inteligência artificial e não os mostramos a ninguém fora da sua empresa. O uso e a
+  transferência de informações recebidas das APIs do Google pelo lobs seguem a{' '}
+  <a
+    href="https://developers.google.com/terms/api-services-user-data-policy"
+    target="_blank"
+    rel="noreferrer"
+    class="underline"
+  >
+    Política de Dados do Usuário dos Serviços de API do Google
+  </a>
+  , incluindo os requisitos de Uso Limitado.
+</p>
+<p>
+  O acesso fica guardado cifrado. Você desconecta quando quiser em Agenda &gt; Configurações
+  (ou em myaccount.google.com/permissions): o lobs revoga o acesso no Google e apaga as
+  agendas do Google e os eventos delas que estavam aqui. Nada é apagado no seu Google Agenda.
+</p>
+
+<h2>9. Armazenamento no navegador e métricas</h2>
+<p>
+  O painel guarda no seu navegador a sessão de login, uma cópia do que você está preenchendo
+  no onboarding (para não perder ao recarregar) e o identificador anônimo das métricas de uso
+  (PostHog), num cookie do domínio lobsbot.com.br que o site e o painel compartilham: assim a
+  visita no site e a sua conta ficam ligadas. Não usamos cookies de propaganda, não gravamos a
+  tela e não capturamos o que você digita. A base legal das métricas é o legítimo interesse de
+  melhorar o serviço; você pode pedir para ficar de fora pelo e-mail abaixo.
+</p>
+
+<h2>10. Encarregado (DPO)</h2>
+<p>
+  {EMPRESA.encarregado} · {EMPRESA.contato}
+</p>
+
+<h2>11. Mudanças</h2>
+<p>
+  Se esta política mudar de forma importante, avisamos e pedimos o seu aceite de novo antes de
+  você continuar usando o lobs.
+</p>
+    
+</Legal>

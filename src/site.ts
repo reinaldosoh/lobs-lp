@@ -4,8 +4,9 @@ export const APP_URL = "https://app.lobsbot.com.br";
 // "Testar grátis" abre o cadastro; "Entrar" abre o login.
 export const CADASTRO_URL = `${APP_URL}/entrar?modo=criar`;
 export const LOGIN_URL = `${APP_URL}/entrar`;
-export const TERMS_URL = "https://app.lobsbot.com.br/termos";
-export const PRIVACY_URL = "https://app.lobsbot.com.br/privacidade";
+// As páginas legais em HTML de verdade, no próprio site (o Google lê sem JavaScript).
+export const TERMS_URL = "/termos";
+export const PRIVACY_URL = "/privacidade";
 // O WhatsApp da lobsbot (o lob de vendas do próprio lobs), com a primeira mensagem pronta:
 // os botões "Conversar com os lobs" abrem a conversa com ela.
 export const LOBSBOT_WHATSAPP = "5522996132623";

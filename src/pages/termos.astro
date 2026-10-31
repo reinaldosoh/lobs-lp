@@ -1,0 +1,179 @@
+---
+import Legal from "../layouts/Legal.astro";
+const EMPRESA = {
+  nome: 'lobs',
+  razaoSocial: 'SOUREINO LTDA',
+  cnpj: '63.289.746/0001-87',
+  endereco:
+    'Rua Rio Grande do Norte, 1435, Sala 708, Pavimento 7, Savassi, Belo Horizonte/MG, CEP 30130-138',
+  contato: 'contato@soureino.com',
+  encarregado: 'Reinaldo F. Campos',
+  foro: 'Belo Horizonte/MG',
+};
+---
+<Legal titulo="Termos de uso" caminho="/termos" descricao="Os termos de uso do lobs, agentes de IA para o WhatsApp do seu negócio.">
+<p>
+  Estes termos valem para quem cria uma conta no {EMPRESA.nome} ({EMPRESA.razaoSocial}, CNPJ{' '}
+  {EMPRESA.cnpj}). Ao criar a conta e marcar o aceite, você concorda com eles e com a{' '}
+  <a href="/privacidade" class="underline">
+    política de privacidade
+  </a>
+  .
+</p>
+
+<h2>1. O que é o lobs</h2>
+<p>
+  O lobs é um atendente com inteligência artificial para o WhatsApp do seu negócio. Ele
+  responde clientes, tira dúvidas, agenda horários e monta pedidos com base nas informações
+  que você cadastra (o “manual” do seu lob), e passa a conversa para a sua equipe quando
+  precisa.
+</p>
+
+<h2>2. Sua conta</h2>
+<ul>
+  <li>
+    Você precisa ter 18 anos ou mais e informar dados verdadeiros, incluindo um WhatsApp seu.
+  </li>
+  <li>
+    Você é responsável pelo acesso à sua conta e por quem você convida para a sua equipe.
+  </li>
+  <li>Uma conta pode ter um ou mais negócios; quem cria o negócio é o dono dele no lobs.</li>
+</ul>
+
+<h2>3. Como falamos com você</h2>
+<p>
+  Ao aceitar estes termos, você autoriza o lobs a falar com você pelo WhatsApp e por e-mail
+  sobre a sua conta: confirmação de cadastro, ajuda para terminar a configuração (por exemplo,
+  se você parou no meio do onboarding), avisos de segurança, cobrança e mudanças no serviço.
+  Novidades, dicas e ofertas só chegam se você marcar a opção separada para isso, e você pode
+  desmarcar a qualquer momento. Para parar de receber, responda “parar” ou fale com{' '}
+  {EMPRESA.contato}.
+</p>
+
+<h2>4. O WhatsApp do seu negócio</h2>
+<ul>
+  <li>
+    Você conecta o número do seu negócio lendo um QR Code, como no WhatsApp Web. Use um número
+    que seja seu ou da sua empresa.
+  </li>
+  <li>
+    A conexão usa o WhatsApp Web, não a API oficial da Meta. A Meta pode limitar ou bloquear
+    números que mandam mensagens em massa, sem pedido do cliente ou que recebem muitas
+    denúncias. O lobs responde quem fala com você e não faz disparos em massa; mesmo assim, o
+    uso do WhatsApp segue as regras da Meta, e um bloqueio aplicado por ela não é
+    responsabilidade do lobs.
+  </li>
+  <li>
+    O lob também pode escrever primeiro em dois casos: no <b>retorno combinado</b> (a pessoa
+    pediu ou aceitou que ele chamasse depois) e no <b>follow-up</b>, se você ligar uma
+    sequência. Sempre só para quem já falou com o seu negócio, no horário que você escolher,
+    no máximo 1 mensagem sem resposta por pessoa a cada 24 horas e 50 por dia, e para quando a
+    pessoa responde, pede para parar ou a sua equipe assume. Ligar o follow-up e o texto dos
+    passos são decisão sua.
+  </li>
+  <li>
+    Você é o responsável pelas conversas com os seus clientes e por ter base legal para
+    atendê-los (veja a política de privacidade).
+  </li>
+</ul>
+
+<h2>5. A inteligência artificial</h2>
+<ul>
+  <li>
+    O lob responde com base no manual que você cadastra. Revise as informações (preços,
+    horários, serviços, políticas): se o manual estiver errado, a resposta também estará.
+  </li>
+  <li>
+    Respostas de IA podem errar. O lob foi feito para não inventar preços nem horários e para
+    passar para a equipe quando não sabe, mas você deve acompanhar as conversas pelo painel.
+  </li>
+  <li>
+    O lob não dá diagnóstico, orientação médica, jurídica ou financeira, nem promete
+    resultados em nome do seu negócio.
+  </li>
+  <li>Quando perguntam se é um robô, o lob diz a verdade.</li>
+  <li>
+    Você pode usar a IA da sua empresa (uma chave de API da OpenAI ou da DeepSeek, ou a
+    assinatura do ChatGPT) no lugar do Lobs AI. Nesse caso o provedor é contratado por você: o
+    custo, os limites de uso e o contrato com ele são da sua empresa, e o lobs usa a chave ou
+    a assinatura só para responder pelo seu negócio. Você pode voltar ao Lobs AI quando
+    quiser.
+  </li>
+</ul>
+
+<h2>6. Uso permitido</h2>
+<p>Não é permitido usar o lobs para:</p>
+<ul>
+  <li>mandar spam, golpes, conteúdo ilegal, discriminatório ou que engane o cliente;</li>
+  <li>vender produtos ou serviços proibidos por lei ou pelas regras do WhatsApp;</li>
+  <li>
+    tentar invadir, copiar ou sobrecarregar o serviço, ou acessar dados de outras contas.
+  </li>
+</ul>
+<p>Se isso acontecer, podemos suspender ou encerrar a conta.</p>
+
+<h2>7. Planos e pagamento</h2>
+<p>
+  O lobs pode ter um período de teste e planos pagos. Preço, limites e forma de cobrança
+  aparecem antes de você assinar. Você pode cancelar quando quiser; o acesso segue até o fim
+  do período já pago.
+</p>
+<ul>
+  <li>
+    Os pagamentos são processados pela AbacatePay (Pix, cartão de crédito, Apple Pay e Google
+    Pay). O número do cartão é digitado direto no formulário seguro dela e não passa pelo
+    lobs.
+  </li>
+  <li>
+    A assinatura renova sozinha no fim de cada período (mês ou ano). No cartão, cobramos o
+    cartão que você usou, pelo mesmo valor, até você cancelar; no Pix, o próximo Pix aparece
+    no painel alguns dias antes de vencer.
+  </li>
+  <li>
+    Se a renovação não for paga, tentamos de novo por alguns dias; depois disso o plano é
+    suspenso, sem multa, até você pagar de novo.
+  </li>
+  <li>
+    Ao trocar de plano, o tempo já pago continua valendo e o plano novo começa a contar depois
+    dele. Reembolso é feito a pedido, pela equipe do lobs, conforme o Código de Defesa do
+    Consumidor.
+  </li>
+</ul>
+
+<h2>8. Disponibilidade e responsabilidade</h2>
+<ul>
+  <li>
+    Trabalhamos para o lobs ficar no ar o tempo todo, mas podem acontecer paradas, inclusive
+    por falhas do WhatsApp, da internet ou dos provedores de IA.
+  </li>
+  <li>
+    Na medida permitida pela lei, o lobs não responde por lucros cessantes, perda de vendas ou
+    danos indiretos. Nada aqui afasta direitos que a lei não deixa afastar.
+  </li>
+</ul>
+
+<h2>9. Seus dados e o fim da conta</h2>
+<p>
+  Você pode exportar ou pedir a exclusão dos seus dados a qualquer momento. Ao encerrar a
+  conta, apagamos ou anonimizamos os dados no prazo descrito na política de privacidade, menos
+  o que a lei manda guardar.
+</p>
+
+<h2>10. Mudanças nestes termos</h2>
+<p>
+  Se mudarmos algo importante, avisamos pelo painel, e-mail ou WhatsApp e pedimos o seu aceite
+  de novo antes de você continuar usando o lobs.
+</p>
+
+<h2>11. Lei e foro</h2>
+<p>
+  Estes termos seguem a lei brasileira. Fica eleito o foro de {EMPRESA.foro}, ressalvado o
+  direito do consumidor de usar o foro do próprio domicílio.
+</p>
+
+<h2>Contato</h2>
+<p>
+  {EMPRESA.razaoSocial} · {EMPRESA.endereco} · {EMPRESA.contato}
+</p>
+    
+</Legal>
