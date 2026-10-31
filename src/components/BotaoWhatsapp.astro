@@ -1,0 +1,9 @@
+---
+// "Conversar com os lobs": abre o WhatsApp da lobsbot com a mensagem pronta. Fica sempre ao lado
+// do "Testar grátis": muita gente prefere conversar a fazer o cadastro e a configuração.
+import { siWhatsapp } from "simple-icons";
+import { DEMO_WHATSAPP_URL, DEMO_PRONTO } from "../site";
+
+const { texto = "Conversar com os lobs", class: classe = "" } = Astro.props as { texto?: string; class?: string };
+---
+{DEMO_PRONTO && <a href={DEMO_WHATSAPP_URL} target="_blank" rel="noopener" class:list={["inline-flex h-12 w-full items-center justify-center gap-2 rounded-full border border-line bg-white px-6 text-[16px] whitespace-nowrap text-ink shadow-[0_1px_2px_rgba(11,27,46,0.05)] transition-[background-color,transform] duration-200 hover:bg-surface-2 active:scale-[0.98] sm:h-[52px] sm:w-auto sm:text-[17px]", classe]}><svg viewBox="0 0 24 24" class="size-5 text-[#25D366]" fill="currentColor" aria-hidden="true"><path d={siWhatsapp.path} /></svg>{texto}</a>}

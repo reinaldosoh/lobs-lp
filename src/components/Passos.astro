@@ -2,7 +2,8 @@
 import { COPY, type Variante } from "../variantes";
 const P = COPY[(Astro.props as { v: Variante }).v].passos;
 import Lob from "./islands/Lob";
-import { APP_URL } from "../site";
+import { CADASTRO_URL } from "../site";
+import BotaoWhatsapp from "./BotaoWhatsapp.astro";
 const CEU = "bg-[radial-gradient(90%_70%_at_0%_100%,#8CC8FA_0%,transparent_60%),radial-gradient(80%_70%_at_100%_0%,#D6F4FF_0%,transparent_60%),linear-gradient(160deg,#EAF6FF_0%,#BFE2FF_55%,#93CBF8_100%)]";
 // QR de enfeite (não é um código real).
 const FINDER = [0,1,2,9,10,11,18,19,20,6,7,8,15,16,17,24,25,26,54,55,56,63,64,65,72,73,74];
@@ -70,7 +71,8 @@ const QR = Array.from({ length: 81 }, (_, i) => { seed = (seed * 1103515245 + 12
     </div>
 
     <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-      <a href={APP_URL} class="btn-glossy inline-flex h-[52px] items-center justify-center rounded-full px-7 text-[17px]">Testar grátis</a>
+      <a href={CADASTRO_URL} class="btn-glossy inline-flex h-[52px] items-center justify-center rounded-full px-7 text-[17px]">Testar grátis</a>
+      <BotaoWhatsapp />
       <a href="#planos" class="inline-flex h-[52px] items-center justify-center rounded-full bg-surface-2 px-7 text-[17px] text-ink transition-colors hover:bg-[#dcebfb]">Ver planos</a>
     </div>
   </div>

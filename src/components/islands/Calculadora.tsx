@@ -1,6 +1,7 @@
 import { useState } from "preact/hooks";
 import Lob from "./Lob";
-import { APP_URL } from "../../site";
+import { siWhatsapp } from "simple-icons";
+import { CADASTRO_URL, DEMO_WHATSAPP_URL, DEMO_PRONTO } from "../../site";
 
 // Estimativa do documento do teste: contatos por semana × 4,3 semanas × % perdida × valor médio.
 const PERDAS = [10, 20, 30];
@@ -50,9 +51,15 @@ export default function Calculadora() {
         <p class="mt-1 text-[44px] leading-[1.05] font-medium tracking-[-0.03em] tabular-nums sm:text-[56px]">{brl(total)}</p>
         <p class="mt-1 text-[16px] text-white/70">por mês na mesa.</p>
         <p class="mt-6 border-t border-white/15 pt-5 text-[15px] text-white/80">O plano com IA custa R$ 146/mês.</p>
-        <a href={APP_URL} class="btn-glossy mt-6 inline-flex h-[52px] items-center justify-center rounded-full px-7 text-[17px]">
+        <a href={CADASTRO_URL} class="btn-glossy mt-6 inline-flex h-[52px] items-center justify-center rounded-full px-7 text-[17px]">
           Recuperar esses clientes
         </a>
+        {DEMO_PRONTO && (
+          <a href={DEMO_WHATSAPP_URL} target="_blank" rel="noopener" class="mt-2.5 inline-flex h-[52px] items-center justify-center gap-2 rounded-full border border-white/25 px-7 text-[17px] text-white transition-colors hover:bg-white/10">
+            <svg viewBox="0 0 24 24" class="size-5 text-[#25D366]" fill="currentColor" aria-hidden="true"><path d={siWhatsapp.path} /></svg>
+            Conversar com os lobs
+          </a>
+        )}
         <span class="absolute -top-3 -right-3 w-[84px]">
           <Lob still ticks uid="calc" color="orange" class="w-full" />
         </span>

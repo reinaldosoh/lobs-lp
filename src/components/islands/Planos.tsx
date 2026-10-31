@@ -1,7 +1,8 @@
 import { useState } from "preact/hooks";
 import { Check } from "./icons";
 import Lob from "./Lob";
-import { APP_URL } from "../../site";
+import { siWhatsapp } from "simple-icons";
+import { APP_URL, CADASTRO_URL, DEMO_WHATSAPP_URL, DEMO_PRONTO } from "../../site";
 
 type Ciclo = "mensal" | "anual";
 
@@ -93,9 +94,15 @@ export default function Planos({ notaComIa }: { notaComIa?: string }) {
               </div>
             )}
             <div class="mt-6 flex flex-col gap-2.5">
-              <a href={APP_URL} class="btn-glossy inline-flex h-12 items-center justify-center rounded-full px-6 text-[16px]">
+              <a href={CADASTRO_URL} class="btn-glossy inline-flex h-12 items-center justify-center rounded-full px-6 text-[16px]">
                 Testar grátis
               </a>
+              {DEMO_PRONTO && (
+                <a href={DEMO_WHATSAPP_URL} target="_blank" rel="noopener" class="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-line bg-white px-6 text-[16px] text-ink transition-colors hover:bg-surface-2">
+                  <svg viewBox="0 0 24 24" class="size-5 text-[#25D366]" fill="currentColor" aria-hidden="true"><path d={siWhatsapp.path} /></svg>
+                  Conversar com os lobs
+                </a>
+              )}
               <a href={`${APP_URL}/assinar?plano=${p.codigo}-${ciclo}`} class="inline-flex h-12 items-center justify-center rounded-full bg-surface-2 px-6 text-[16px] text-ink transition-colors hover:bg-[#dcebfb]">
                 Assinar {p.nome}
               </a>

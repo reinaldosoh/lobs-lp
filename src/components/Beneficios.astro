@@ -1,6 +1,7 @@
 ---
 import Lob from "./islands/Lob";
-import { APP_URL } from "../site";
+import { CADASTRO_URL } from "../site";
+import BotaoWhatsapp from "./BotaoWhatsapp.astro";
 import type { Item } from "../variantes";
 
 // Quatro cartões lado a lado. `perda` mostra os lobs apagados (o que acontece sem eles).
@@ -24,8 +25,9 @@ const CORES = ["blue", "green", "orange", "pink"] as const;
       ))}
     </div>
     {cta && (
-      <div class="mt-10 flex justify-center">
-        <a href={APP_URL} class="btn-glossy inline-flex h-[52px] items-center justify-center rounded-full px-7 text-[17px]">{cta}</a>
+      <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <a href={CADASTRO_URL} class="btn-glossy inline-flex h-[52px] items-center justify-center rounded-full px-7 text-[17px]">{cta}</a>
+        <BotaoWhatsapp />
       </div>
     )}
   </div>
