@@ -1,6 +1,6 @@
 ---
 import { SITE_URL } from "../site";
-import type { Variante } from "../variantes";
+import { COPY, type Variante } from "../variantes";
 
 const { variante = "a" } = Astro.props as { variante?: Variante };
 import "../styles/global.css";
@@ -11,7 +11,10 @@ const title = "lobs · Agentes de IA que falam a favor da sua empresa";
 const description =
   "Agentes de IA para o WhatsApp do seu negócio: clínicas, imobiliárias, escolas, lojas e profissionais autônomos. Atendem, agendam, cobram e fazem follow-up, com tudo registrado.";
 const ogDescription = "Agentes de IA que falam a favor da sua empresa. Nenhum cliente fica sem resposta.";
-const ogImage = new URL("/og-lobs.jpg", SITE_URL).href;
+// Uma imagem por variante, com o título dela (a URL pura sorteia a variante e leva a imagem dela).
+const ogImage = new URL(`/og-lobs-${variante}.jpg`, SITE_URL).href;
+const ogTitle = "lobs · Agentes de IA para o WhatsApp do seu negócio";
+const ogAlt = "lobs: " + COPY[variante].hero.titulo;
 ---
 <!doctype html>
 <html lang="pt-BR" data-variante={variante} class="T19VSG_variable _8Li5zG_variable h-full antialiased">
@@ -22,14 +25,21 @@ const ogImage = new URL("/og-lobs.jpg", SITE_URL).href;
     <meta name="description" content={description} />
     <link rel="canonical" href={SITE_URL + "/"} />
     {variante === "b" && <meta name="robots" content="noindex" />}
-    <meta property="og:title" content="lobs" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="lobs" />
+    <meta property="og:url" content={SITE_URL + "/"} />
+    <meta property="og:title" content={ogTitle} />
     <meta property="og:description" content={ogDescription} />
     <meta property="og:locale" content="pt_BR" />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:image:secure_url" content={ogImage} />
+    <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={ogAlt} />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="lobs" />
+    <meta name="twitter:title" content={ogTitle} />
+    <meta name="twitter:image:alt" content={ogAlt} />
     <meta name="twitter:description" content={ogDescription} />
     <meta name="twitter:image" content={ogImage} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
