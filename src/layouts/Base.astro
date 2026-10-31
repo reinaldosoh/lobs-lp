@@ -59,5 +59,8 @@ const ogImage = new URL("/og-lobs.jpg", SITE_URL).href;
       }, true);
       if ("serviceWorker" in navigator) window.addEventListener("load", () => navigator.serviceWorker.register("/sw.js"));
     </script>
+    <script>
+      import "../scripts/metricas";
+    </script>
   </body>
 </html>
