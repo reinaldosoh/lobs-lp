@@ -25,8 +25,8 @@ const CORES = ["blue", "green", "orange", "pink"] as const;
       ))}
     </div>
     {cta && (
-      <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-        <a href={CADASTRO_URL} class="btn-glossy inline-flex h-[52px] items-center justify-center rounded-full px-7 text-[17px]">{cta}</a>
+      <div class="mt-10 mx-auto flex w-full max-w-[340px] flex-col gap-2 sm:max-w-none sm:flex-row sm:items-center sm:justify-center sm:gap-3">
+        <a href={CADASTRO_URL} class="btn-glossy inline-flex h-12 w-full items-center justify-center rounded-full px-7 text-[16px] sm:h-[52px] sm:w-auto sm:text-[17px]">{cta}</a>
         <BotaoWhatsapp />
       </div>
     )}
