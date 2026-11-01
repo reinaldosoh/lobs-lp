@@ -4,6 +4,7 @@ import { useEffect, useRef } from "preact/hooks";
 import HeroChat, { type Step } from "./HeroChat";
 import Lob, { LOB_LINEUP, LOB_VIEWBOX, type LobColor } from "./Lob";
 import { ROLES } from "./roles";
+import type { Nicho } from "../../variantes";
 
 const [, , VB_W, VB_H] = LOB_VIEWBOX.split(" ").map(Number);
 const RATIO = VB_H / VB_W;
@@ -51,6 +52,7 @@ const TOOL_LOB: Record<string, LobColor> = {
   "Google Agenda": "orange",
   Pix: "green",
   Banco: "green",
+  Recibo: "green",
   "Ligação": "pink",
   "Google Meet": "purple",
   Slack: "purple",
@@ -80,7 +82,7 @@ const DROP_LEN = 0.16;
  * 3. the WhatsApp chat rises and they settle around it: they peek from behind the window,
  *    duck, pop up somewhere else, and the right one jumps out when its tool runs in the chat.
  */
-export default function LobsHero({ children }: { children?: ComponentChildren }) {
+export default function LobsHero({ children, nicho }: { children?: ComponentChildren; nicho?: Nicho }) {
   const sectionRef = useRef<HTMLElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
@@ -304,7 +306,7 @@ export default function LobsHero({ children }: { children?: ComponentChildren })
               Veja os lobs trabalhando numa conversa de verdade no WhatsApp
             </p>
             <div ref={chatBoxRef} class="w-full max-w-[940px] origin-top">
-              <HeroChat onStep={onStep} />
+              <HeroChat onStep={onStep} nicho={nicho} />
             </div>
           </div>
         </div>

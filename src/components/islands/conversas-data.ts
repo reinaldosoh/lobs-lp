@@ -1,3 +1,5 @@
+import type { Nicho } from "../../variantes";
+
 export type ToolIcon = "calendar" | "file" | "crm" | "handoff" | "pix" | "bank" | "sign" | "video" | "phone";
 export type Tool = {
   app: string;
@@ -236,6 +238,145 @@ export const CONVERSATIONS: Conversation[] = [
     ],
   },
 ];
+
+/** As mesmas telas para consultório de psicologia e psiquiatria (LP /psicologos/). Nada clínico no que o lob anota. */
+export const CONVERSATIONS_PSI: Conversation[] = [
+  {
+    id: "camila",
+    name: "Camila",
+    initials: "CA",
+    color: "#FDBA74",
+    time: "09:12",
+    topic: "Primeira sessão",
+    phone: "2041",
+    since: "outubro",
+    unread: 0,
+    stages: [{ at: 0, label: "Novo contato" }, { at: 6, label: "Agendado" }],
+    knows: [{ at: 4, text: "Prefere sessão online" }, { at: 6, text: "Primeira sessão com a Dra. Marina" }],
+    steps: [
+      { kind: "in", text: "Oi! Queria começar terapia. A Dra. Marina tem horário pra uma primeira sessão?" },
+      { kind: "out", text: "Oi, Camila! Que bom que você escreveu 😊 Sou o assistente da Dra. Marina. Deixa eu olhar a agenda dela." },
+      {
+        kind: "tool",
+        tool: { app: "Google Agenda", icon: "calendar", title: "3 horários livres encontrados", chips: ["Qua · 18h", "Qui · 9h", "Sex · 19h"] },
+      },
+      { kind: "out", text: "Tenho quarta às 18h, quinta às 9h ou sexta às 19h. A sessão é de 50 min, online ou no consultório. Qual prefere?" },
+      { kind: "in", text: "Quarta 18h, online" },
+      {
+        kind: "tool",
+        tool: { app: "Google Meet", icon: "video", title: "Sessão marcada", lines: ["Primeira sessão · Dra. Marina", "Qua, 15/10 · 18:00 · link enviado"] },
+      },
+      { kind: "out", text: "Prontinho! Sua sessão está marcada pra quarta, 15/10, às 18h, pelo Meet ✅ Te mando o link e um lembrete na véspera." },
+      { kind: "in", text: "Obrigada 🙏" },
+    ],
+  },
+  {
+    id: "bruno",
+    name: "Bruno",
+    initials: "BR",
+    color: "#C4B5FD",
+    time: "23:41",
+    topic: "Remarcação",
+    phone: "7318",
+    since: "agosto",
+    unread: 1,
+    stages: [{ at: 0, label: "Em acompanhamento" }],
+    knows: [{ at: 1, text: "Costuma escrever à noite" }, { at: 4, text: "Prefere horário depois das 18h" }],
+    steps: [
+      { kind: "in", text: "Oi, sei que já é tarde 😅 não vou conseguir ir na sessão de quinta, dá pra remarcar?" },
+      { kind: "out", text: "Oi, Bruno! Sem problema, eu respondo a qualquer hora. Pra qual dia fica melhor pra você?" },
+      { kind: "in", text: "Sexta depois das 18h, pode ser?" },
+      { kind: "tool", tool: { app: "Google Agenda", icon: "calendar", title: "Sessão remarcada", lines: ["Qui, 19:00 → Sex, 18:30"] } },
+      { kind: "out", text: "Feito! Sua sessão agora é sexta às 18h30, no mesmo link de sempre. Te lembro na véspera 👍" },
+      { kind: "system", text: "Quinta, 18:00 · Lembrete automático" },
+      { kind: "out", text: "Oi, Bruno! Passando pra lembrar da sua sessão amanhã às 18h30. Confirma?", time: "18:00" },
+      { kind: "in", text: "Confirmo!", time: "18:07" },
+    ],
+  },
+  {
+    id: "helena",
+    name: "Helena",
+    initials: "HE",
+    color: "#86EFAC",
+    time: "11:20",
+    topic: "Pagamento",
+    phone: "5590",
+    since: "julho",
+    unread: 2,
+    stages: [{ at: 0, label: "Em acompanhamento" }],
+    knows: [{ at: 1, text: "Paga as sessões no mês" }, { at: 6, text: "Pede recibo para reembolso" }],
+    steps: [
+      { kind: "in", text: "Oi! Pode me mandar o Pix das sessões deste mês?" },
+      { kind: "out", text: "Claro, Helena! São 4 sessões em outubro. Gerei o Pix aqui 👇" },
+      {
+        kind: "tool",
+        tool: { app: "Pix", icon: "pix", title: "Cobrança gerada", lines: ["R$ 880,00 · 4 sessões · vence dia 10"], code: "00020126580014br.gov.bcb.pix0136…" },
+      },
+      { kind: "in", text: "Paguei! Consegue um recibo pro reembolso do plano?" },
+      { kind: "tool", tool: { app: "Banco", icon: "bank", title: "Pagamento confirmado", lines: ["R$ 880,00 recebido às 11:26"] } },
+      { kind: "out", text: "Recebido, obrigado! Aqui está o recibo com os dados da Dra. Marina para o reembolso 👇" },
+      {
+        kind: "tool",
+        tool: { app: "Recibo", icon: "file", title: "Recibo enviado", file: { name: "Recibo_Helena_Outubro.pdf", meta: "4 sessões · R$ 880,00" } },
+      },
+    ],
+  },
+  {
+    id: "paulo",
+    name: "Paulo",
+    initials: "PA",
+    color: "#93C5FD",
+    time: "14:05",
+    topic: "Psiquiatria",
+    phone: "1126",
+    since: "outubro",
+    unread: 0,
+    stages: [{ at: 0, label: "Novo contato" }, { at: 6, label: "Agendado" }],
+    knows: [{ at: 2, text: "Atendimento particular" }, { at: 6, text: "Primeira consulta com o Dr. Ricardo" }],
+    steps: [
+      { kind: "in", text: "Boa tarde. Queria marcar com o psiquiatra. Ele atende convênio?" },
+      {
+        kind: "out",
+        text: "Boa tarde, Paulo! O Dr. Ricardo atende particular, e eu envio o recibo para você pedir reembolso ao seu plano. A primeira consulta é de 1h.",
+      },
+      { kind: "in", text: "Ok. E já dá pra falar sobre o remédio que eu tomo?" },
+      { kind: "out", text: "Isso o Dr. Ricardo vê com você na consulta, com todo o cuidado. Eu cuido só da agenda 🙂 Prefere manhã ou tarde?" },
+      { kind: "in", text: "Manhã" },
+      {
+        kind: "tool",
+        tool: { app: "Google Agenda", icon: "calendar", title: "Consulta marcada", lines: ["Primeira consulta · Dr. Ricardo", "Ter, 21/10 · 09:00 · Consultório"] },
+      },
+      { kind: "out", text: "Marcado: terça, 21/10, às 9h no consultório ✅ Te mando o endereço e um lembrete na véspera." },
+    ],
+  },
+  {
+    id: "lia",
+    name: "Lia",
+    initials: "LI",
+    color: "#F9A8D4",
+    time: "16:48",
+    topic: "Retorno",
+    phone: "8847",
+    since: "setembro",
+    unread: 0,
+    stages: [{ at: 0, label: "Novo contato" }, { at: 5, label: "Agendado" }],
+    knows: [{ at: 3, text: "Quer horário no sábado" }],
+    steps: [
+      { kind: "in", text: "Oi, queria saber o valor da sessão" },
+      { kind: "out", text: "Oi, Lia! A sessão de 50 min é R$ 220, online ou no consultório. Quer que eu veja um horário pra você?" },
+      { kind: "system", text: "2 dias sem resposta · o lob retomou a conversa" },
+      { kind: "out", text: "Oi, Lia! Passando só pra saber se ainda quer ver um horário. Sem pressa, fico por aqui 💙", time: "10:00" },
+      { kind: "in", text: "Quero sim! Tem sábado de manhã?", time: "10:32" },
+      { kind: "tool", tool: { app: "Google Agenda", icon: "calendar", title: "Sessão marcada", lines: ["Sáb, 25/10 · 10:00 · Online"] } },
+      { kind: "out", text: "Tenho sim! Marquei sábado, 25/10, às 10h, online ✅ Te mando o link na véspera.", time: "10:33" },
+    ],
+  },
+];
+
+/** As conversas que a LP mostra para cada nicho. */
+export function conversasDo(nicho: Nicho = "geral") {
+  return nicho === "psi" ? CONVERSATIONS_PSI : CONVERSATIONS;
+}
 
 /** Preview text for the sidebar: last message or tool title before `upTo`. */
 export function preview(c: Conversation, upTo = c.steps.length) {

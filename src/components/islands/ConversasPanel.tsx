@@ -22,7 +22,8 @@ import {
   UserRound,
   Video,
 } from "./icons";
-import { CONVERSATIONS, preview, stepDuration } from "./conversas-data";
+import { conversasDo, preview, stepDuration } from "./conversas-data";
+import type { Nicho } from "../../variantes";
 import type { Conversation, Step, Tool, ToolIcon } from "./conversas-data";
 
 /* A tela "Conversas" do painel do lobs (apps/web/src/rotas/conversas.tsx), com dados fictícios:
@@ -267,17 +268,20 @@ export default function ConversasPanel({
   variant = "full",
   autoAdvance = false,
   onStep,
+  nicho = "geral",
 }: {
   variant?: Variant;
   autoAdvance?: boolean;
   onStep?: (step: Step) => void;
+  nicho?: Nicho;
 }) {
   const mini = variant === "mini";
+  const CONVERSATIONS = conversasDo(nicho);
   const [active, setActive] = useState(0);
   const [step, setStep] = useState(0);
   const [pending, setPending] = useState(false);
   const [visible, setVisible] = useState(false);
-  const [lido, setLido] = useState<Set<string>>(() => new Set(["rafa"]));
+  const [lido, setLido] = useState<Set<string>>(() => new Set([CONVERSATIONS[0].id]));
   const [view, setView] = useState<"chat" | "list">("chat");
   const rootRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -327,7 +331,7 @@ export default function ConversasPanel({
     setStep(0);
     setPending(false);
     setLido((l) => new Set(l).add(CONVERSATIONS[i].id));
-  }, []);
+  }, [CONVERSATIONS]);
 
   const typing = pending && current && (current.kind === "in" || current.kind === "out") ? current.kind : null;
 

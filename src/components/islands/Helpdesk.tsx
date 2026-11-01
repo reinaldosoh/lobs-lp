@@ -1,12 +1,13 @@
 import ConversasPanel from "./ConversasPanel";
+import type { Nicho } from "../../variantes";
 import { PanelFrame, ScaleToFit } from "./shared";
 
 /** A aba Help desk da janela "lobs · Painel": a mesma tela de Conversas, sem a ficha, em miniatura. */
-export default function Helpdesk() {
+export default function Helpdesk({ nicho }: { nicho?: Nicho }) {
   return (
     <ScaleToFit width={650}>
       <PanelFrame title="lobs · Painel" active="helpdesk">
-        <ConversasPanel variant="mini" autoAdvance />
+        <ConversasPanel variant="mini" autoAdvance nicho={nicho} />
       </PanelFrame>
     </ScaleToFit>
   );
