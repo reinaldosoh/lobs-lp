@@ -2,13 +2,14 @@
 import { siWhatsapp } from "simple-icons";
 import Lob from "./islands/Lob";
 import { DEMO_WHATSAPP_URL, DEMO_PRONTO } from "../site";
-import { COPY, type Variante } from "../variantes";
+import { getCopy, type Nicho, type Variante } from "../variantes";
 
-const { v } = Astro.props as { v: Variante };
-const d = COPY[v].demo;
+const { v, nicho = "geral" } = Astro.props as { v: Variante; nicho?: Nicho };
+const copy = getCopy(nicho, v);
+const d = copy.demo;
 // Conversa de exemplo ao lado do botão.
-const conversa =
-  v === "a"
+const conversa = copy.nicho?.conversa ??
+  (v === "a"
     ? [
         { de: "cliente", t: "Oi! Quanto custa a limpeza de pele?" },
         { de: "lob", t: "Oi! A limpeza de pele sai R$ 180 e dura 1h. Tenho quinta às 14h ou sexta às 10h. Qual fica melhor?" },
@@ -20,7 +21,7 @@ const conversa =
         { de: "lob", t: "Claro! Quer que eu segure o horário de quinta enquanto você decide? Te chamo amanhã às 10h para confirmar." },
         { de: "nota", t: "dia seguinte, 10h" },
         { de: "lob", t: "Bom dia! Passando para saber: mantenho seu horário de quinta?" },
-      ];
+      ]);
 ---
 <section id="demo" class="px-4 py-20 md:px-6 md:py-24">
   <div class="mx-auto grid max-w-[1100px] items-center gap-8 overflow-hidden rounded-3xl border border-line bg-[radial-gradient(90%_70%_at_0%_100%,#8CC8FA_0%,transparent_60%),radial-gradient(80%_70%_at_100%_0%,#D6F4FF_0%,transparent_60%),linear-gradient(160deg,#EAF6FF_0%,#BFE2FF_55%,#93CBF8_100%)] p-6 sm:p-10 md:grid-cols-2 md:p-14">

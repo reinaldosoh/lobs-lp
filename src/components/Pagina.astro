@@ -15,44 +15,49 @@ import Planos from "./Planos.astro";
 import Faq from "./Faq.astro";
 import Cta from "./Cta.astro";
 import Footer from "./Footer.astro";
-import { COPY, type Variante } from "../variantes";
+import Confianca from "./Confianca.astro";
+import { getCopy, type Nicho, type Variante } from "../variantes";
 
 // A mesma LP nas duas variantes do teste A/B; muda o texto e a ordem das seções (ver variantes.ts).
-const { v } = Astro.props as { v: Variante };
-const c = COPY[v];
+const { v, nicho = "geral" } = Astro.props as { v: Variante; nicho?: Nicho };
+const c = getCopy(nicho, v);
+const cf = c.nicho?.confianca;
+const dep = !!c.depoimentos;
 ---
-<Base variante={v}>
+<Base variante={v} nicho={nicho}>
   <Header />
   <main>
-    <Hero v={v} />
+    <Hero v={v} nicho={nicho} />
     {v === "a" ? (
       <>
         <Beneficios id="o-que-muda" titulo={c.beneficios.titulo} itens={c.beneficios.itens} cta={c.beneficios.cta} />
-        <VejaFuncionando v={v} />
-        <Passos v={v} />
-        <ParaQuem v={v} />
-        <Plataforma v={v} />
-        <Conectados />
+        <VejaFuncionando v={v} nicho={nicho} />
+        <Passos v={v} nicho={nicho} />
+        <ParaQuem v={v} nicho={nicho} />
+        <Plataforma v={v} nicho={nicho} />
+        {cf && <Confianca {...cf} />}
+        <Conectados v={v} nicho={nicho} />
         <Plugin />
-        <Depoimentos v={v} />
+        {dep && <Depoimentos v={v} nicho={nicho} />}
       </>
     ) : (
       <>
         <Beneficios id="problema" titulo={c.problema!.titulo} itens={c.problema!.itens} perda />
-        <Calculadora />
+        <Calculadora v={v} nicho={nicho} />
         <Beneficios id="solucao" titulo={c.beneficios.titulo} itens={c.beneficios.itens} />
-        <VejaFuncionando v={v} />
-        <Passos v={v} />
-        <Depoimentos v={v} />
-        <ParaQuem v={v} />
-        <Plataforma v={v} />
-        <Conectados />
+        <VejaFuncionando v={v} nicho={nicho} />
+        <Passos v={v} nicho={nicho} />
+        {dep && <Depoimentos v={v} nicho={nicho} />}
+        <ParaQuem v={v} nicho={nicho} />
+        <Plataforma v={v} nicho={nicho} />
+        {cf && <Confianca {...cf} />}
+        <Conectados v={v} nicho={nicho} />
         <Plugin />
       </>
     )}
-    <Planos v={v} />
-    <Faq v={v} />
-    <Cta v={v} />
+    <Planos v={v} nicho={nicho} />
+    <Faq v={v} nicho={nicho} />
+    <Cta v={v} nicho={nicho} />
   </main>
   <Footer />
 </Base>

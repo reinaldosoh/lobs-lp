@@ -1,6 +1,7 @@
 ---
-import { COPY, type Variante } from "../variantes";
-const p = COPY[(Astro.props as { v: Variante }).v].planos;
+import { getCopy, type Nicho, type Variante } from "../variantes";
+const { v, nicho = "geral" } = Astro.props as { v: Variante; nicho?: Nicho };
+const p = getCopy(nicho, v).planos;
 import Planos from "./islands/Planos";
 ---
 <section id="planos" class="px-4 py-20 md:px-6 md:py-24">

@@ -2,6 +2,9 @@
 // O nginx sorteia a variante por visitante (cookie lobs_v) e serve "/" ou "/b/".
 
 export type Variante = "a" | "b";
+// Nicho da LP: "geral" é a LP de hoje; os outros trocam só o texto (o layout e os lobs são os mesmos).
+export type Nicho = "geral" | "psi";
+export type Cor = "blue" | "orange" | "green" | "pink" | "purple";
 export type Item = { titulo: string; texto: string };
 export type Pergunta = { p: string; r: string };
 
@@ -20,10 +23,22 @@ export type Copy = {
   passos: { titulo: string; subtitulo: string; itens: Item[] };
   paraQuem: { titulo: string };
   painel: { titulo: string; texto: string };
-  depoimentos: { titulo: string };
+  depoimentos?: { titulo: string };
   planos: { titulo: string; subtitulo: string; notaComIa?: string };
   faq: { inicio: Pergunta[] };
   cta: { titulo: string };
+  // Campos que só os nichos preenchem; sem eles valem os textos da LP geral.
+  nicho?: {
+    slug: string; // vai no utm_content e no PostHog
+    meta: { title: string; description: string; ogTitle: string; ogDescription: string; canonical: string };
+    conversa: { de: "cliente" | "lob" | "nota"; t: string }[];
+    paraQuem: { texto: string; fecho: string; cartoes: { cor: Cor; nome: string; texto: string }[] };
+    painelCartoes: Item[]; // Help desk, CRM, campanhas, avisos (nessa ordem)
+    conectados: { titulo: string; texto: string };
+    calculadora: { titulo: string; subtitulo: string; contatos: string; valor: string; perda: string };
+    confianca: { titulo: string; subtitulo: string; itens: Item[] };
+    ctaTexto: string;
+  };
 };
 
 // Perguntas novas do documento do teste, nas duas variantes.
@@ -33,7 +48,7 @@ const FAQ_NOVAS: Pergunta[] = [
   { p: "Preciso saber configurar alguma coisa?", r: "Não. Você conta sobre sua empresa em texto simples e os lobs aprendem." },
 ];
 
-export const COPY: Record<Variante, Copy> = {
+export const COPY_GERAL: Record<Variante, Copy> = {
   a: {
     hero: {
       etiqueta: "Agentes de IA para o WhatsApp do seu negócio",
@@ -136,6 +151,11 @@ export const COPY: Record<Variante, Copy> = {
     cta: { titulo: "Quantos clientes mandaram mensagem hoje e ainda estão esperando?" },
   },
 };
+
+import { COPY_PSI } from "./nichos/psi";
+
+export const COPY: Record<Nicho, Record<Variante, Copy>> = { geral: COPY_GERAL, psi: COPY_PSI };
+export const getCopy = (nicho: Nicho, v: Variante): Copy => COPY[nicho][v];
 
 // RASCUNHO: frases escritas a partir do perfil de cada cliente. Confirmar o texto com cada um antes de publicar.
 // Fotos: coloque em public/depoimentos/<arquivo> e preencha `foto`.

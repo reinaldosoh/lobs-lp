@@ -1,0 +1,25 @@
+---
+import Lob from "./islands/Lob";
+import type { Item } from "../variantes";
+
+// Seção de limites e sigilo dos nichos de saúde: o que o lob faz e o que fica com o profissional.
+const { titulo, subtitulo, itens } = Astro.props as { titulo: string; subtitulo: string; itens: Item[] };
+const CORES = ["blue", "purple", "pink", "green"] as const;
+---
+<section id="confianca" class="px-4 py-20 md:px-6 md:py-24">
+  <div class="mx-auto max-w-[1100px]">
+    <div class="mx-auto max-w-[760px] text-center">
+      <h2 class="h-section text-balance">{titulo}</h2>
+      <p class="mt-4 text-[16px] leading-[26px] text-ink/75 md:text-[18px] md:leading-[29px]">{subtitulo}</p>
+    </div>
+    <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {itens.map((it, i) => (
+        <div class="flex flex-col rounded-3xl border border-line bg-surface p-6">
+          <span class="block w-12"><Lob still ticks uid={`conf-${i}`} color={CORES[i % 4]} class="w-full" /></span>
+          <h3 class="mt-4 text-[17px] leading-[24px] font-medium">{it.titulo}</h3>
+          <p class="mt-1.5 text-[15px] leading-[23px] text-ink/75">{it.texto}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

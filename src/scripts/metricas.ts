@@ -61,7 +61,7 @@ async function iniciar(): Promise<void> {
     request_batching: false,
     ip: false,
   });
-  posthog.register({ lp_variante: document.documentElement.dataset.variante ?? "a" });
+  posthog.register({ lp_variante: document.documentElement.dataset.variante ?? "a", lp_nicho: document.documentElement.dataset.nicho ?? "geral" });
   const capturar: Captura = (e, p) => posthog.capture(e, p, { transport: "sendBeacon" });
 
   document.addEventListener(

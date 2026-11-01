@@ -1,12 +1,15 @@
 ---
-import { COPY, type Variante } from "../variantes";
-const { titulo } = COPY[(Astro.props as { v: Variante }).v].paraQuem;
+import { getCopy, type Nicho, type Variante } from "../variantes";
+const { v, nicho = "geral" } = Astro.props as { v: Variante; nicho?: Nicho };
+const copy = getCopy(nicho, v);
+const { titulo } = copy.paraQuem;
+const np = copy.nicho?.paraQuem;
 import Lob from "./islands/Lob";
 import LobsViagem from "./islands/LobsViagem";
 import { CADASTRO_URL } from "../site";
 import BotaoWhatsapp from "./BotaoWhatsapp.astro";
 
-const nichos = [
+const nichosGeral = [
   { cor: "green", nome: "Clínicas e saúde", texto: "Agenda consultas, confirma horário, reduz faltas e acolhe o paciente. Do consultório ao psicólogo que atende sozinho." },
   { cor: "orange", nome: "Imobiliárias", texto: "Responde o interessado na hora, qualifica o lead e marca a visita antes que ele procure outro anúncio." },
   { cor: "blue", nome: "Escolas e cursos", texto: "Tira dúvidas de pais e alunos, apresenta turmas e valores, agenda aula experimental e cuida da matrícula." },
@@ -16,6 +19,7 @@ const nichos = [
   { cor: "pink", nome: "Beleza e estética", texto: "Agenda, remarca e lembra o horário, e chama de volta quem sumiu para o retorno." },
   { cor: "orange", nome: "Academias e estúdios", texto: "Reserva aula, reativa aluno parado e renova plano, direto no WhatsApp." },
 ] as const;
+const nichos = np?.cartoes ?? nichosGeral;
 ---
 <section id="para-quem" class="px-4 py-20 md:px-6 md:py-24">
   <LobsViagem client:load />
@@ -23,7 +27,7 @@ const nichos = [
     <div class="mx-auto max-w-[780px] text-center">
       <h2 class="h-section">{titulo}</h2>
       <p class="mt-4 text-[16px] leading-[26px] text-ink/75 md:text-[18px] md:leading-[29px]">
-        O lobs não é um assistente pessoal: é uma equipe de agentes de IA que cuida do WhatsApp da sua empresa, seja ela uma clínica com vários atendentes ou um profissional que atende sozinho.
+        {np?.texto ?? "O lobs não é um assistente pessoal: é uma equipe de agentes de IA que cuida do WhatsApp da sua empresa, seja ela uma clínica com vários atendentes ou um profissional que atende sozinho."}
       </p>
     </div>
   </div>
@@ -40,7 +44,7 @@ const nichos = [
   </div>
   <div class="mx-auto max-w-[1100px]">
     <p class="mx-auto mt-8 max-w-[680px] text-center text-[16px] leading-[26px] text-ink/75">
-      Se o seu negócio atende, vende ou agenda pelo WhatsApp, os lobs são para você.
+      {np?.fecho ?? "Se o seu negócio atende, vende ou agenda pelo WhatsApp, os lobs são para você."}
     </p>
     <div class="mt-6 mx-auto flex w-full max-w-[340px] flex-col gap-2 sm:max-w-none sm:flex-row sm:items-center sm:justify-center sm:gap-3">
       <a href={CADASTRO_URL} class="btn-glossy inline-flex h-12 w-full items-center justify-center rounded-full px-7 text-[16px] sm:h-[52px] sm:w-auto sm:text-[17px]">Testar grátis</a>

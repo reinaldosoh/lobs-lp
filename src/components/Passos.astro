@@ -1,6 +1,7 @@
 ---
-import { COPY, type Variante } from "../variantes";
-const P = COPY[(Astro.props as { v: Variante }).v].passos;
+import { getCopy, type Nicho, type Variante } from "../variantes";
+const { v, nicho = "geral" } = Astro.props as { v: Variante; nicho?: Nicho };
+const P = getCopy(nicho, v).passos;
 import Lob from "./islands/Lob";
 import { CADASTRO_URL } from "../site";
 import BotaoWhatsapp from "./BotaoWhatsapp.astro";

@@ -8,7 +8,9 @@ const PERDAS = [10, 20, 30];
 const brl = (v: number) => v.toLocaleString("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 });
 const num = (s: string) => Math.max(0, Number(s.replace(/\D/g, "")) || 0);
 
-export default function Calculadora() {
+type Rotulos = { contatos: string; valor: string; perda: string };
+
+export default function Calculadora({ rotulos }: { rotulos?: Rotulos }) {
   const [contatos, setContatos] = useState("10");
   const [valor, setValor] = useState("150");
   const [perda, setPerda] = useState(20);
@@ -19,18 +21,18 @@ export default function Calculadora() {
     <div class="grid gap-4 md:grid-cols-[1.1fr_1fr]">
       <div class="flex flex-col gap-5 rounded-3xl border border-line bg-surface p-6 sm:p-8">
         <label class="text-[15px] font-medium">
-          Contatos novos por semana no WhatsApp
+          {rotulos?.contatos ?? "Contatos novos por semana no WhatsApp"}
           <input class={campo} inputMode="numeric" value={contatos} onInput={(e) => setContatos(e.currentTarget.value)} />
         </label>
         <label class="text-[15px] font-medium">
-          Valor médio de uma venda ou atendimento
+          {rotulos?.valor ?? "Valor médio de uma venda ou atendimento"}
           <span class="relative block">
             <span class="pointer-events-none absolute top-1/2 left-4 mt-1 -translate-y-1/2 text-[17px] text-muted">R$</span>
             <input class={`${campo} pl-11`} inputMode="numeric" value={valor} onInput={(e) => setValor(e.currentTarget.value)} />
           </span>
         </label>
         <div>
-          <p class="text-[15px] font-medium">Quantos desses se perdem por demora ou falta de retorno</p>
+          <p class="text-[15px] font-medium">{rotulos?.perda ?? "Quantos desses se perdem por demora ou falta de retorno"}</p>
           <div class="mt-2 grid grid-cols-3 gap-2" role="group">
             {PERDAS.map((p) => (
               <button

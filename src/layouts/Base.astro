@@ -1,33 +1,35 @@
 ---
 import { SITE_URL } from "../site";
-import { COPY, type Variante } from "../variantes";
+import { getCopy, type Nicho, type Variante } from "../variantes";
 
-const { variante = "a" } = Astro.props as { variante?: Variante };
+const { variante = "a", nicho = "geral" } = Astro.props as { variante?: Variante; nicho?: Nicho };
+const nc = getCopy(nicho, variante).nicho;
 import "../styles/global.css";
 import "../styles/tailwind.css";
 import "../styles/lobs.css";
 
-const title = "lobs · Agentes de IA que falam a favor da sua empresa";
-const description =
+const title = nc?.meta.title ?? "lobs · Agentes de IA que falam a favor da sua empresa";
+const description = nc?.meta.description ??
   "Agentes de IA para o WhatsApp do seu negócio: clínicas, imobiliárias, escolas, lojas e profissionais autônomos. Atendem, agendam, cobram e fazem follow-up, com tudo registrado.";
-const ogDescription = "Agentes de IA que falam a favor da sua empresa. Nenhum cliente fica sem resposta.";
+const ogDescription = nc?.meta.ogDescription ?? "Agentes de IA que falam a favor da sua empresa. Nenhum cliente fica sem resposta.";
+const caminho = nc?.meta.canonical ?? "/";
 // Uma imagem por variante, com o título dela (a URL pura sorteia a variante e leva a imagem dela).
 const ogImage = new URL(`/og-lobs-${variante}.jpg`, SITE_URL).href;
-const ogTitle = "lobs · Agentes de IA para o WhatsApp do seu negócio";
-const ogAlt = "lobs: " + COPY[variante].hero.titulo;
+const ogTitle = nc?.meta.ogTitle ?? "lobs · Agentes de IA para o WhatsApp do seu negócio";
+const ogAlt = "lobs: " + getCopy(nicho, variante).hero.titulo;
 ---
 <!doctype html>
-<html lang="pt-BR" data-variante={variante} class="T19VSG_variable _8Li5zG_variable h-full antialiased">
+<html lang="pt-BR" data-variante={variante} data-nicho={nicho} class="T19VSG_variable _8Li5zG_variable h-full antialiased">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={SITE_URL + "/"} />
+    <link rel="canonical" href={SITE_URL + caminho} />
     {variante === "b" && <meta name="robots" content="noindex" />}
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="lobs" />
-    <meta property="og:url" content={SITE_URL + "/"} />
+    <meta property="og:url" content={SITE_URL + caminho} />
     <meta property="og:title" content={ogTitle} />
     <meta property="og:description" content={ogDescription} />
     <meta property="og:locale" content="pt_BR" />
@@ -64,7 +66,8 @@ const ogAlt = "lobs: " + COPY[variante].hero.titulo;
         const u = new URL(a.href);
         const v = document.documentElement.dataset.variante;
         u.searchParams.set("v", v);
-        u.searchParams.set("utm_content", "lp-" + v);
+        const n = document.documentElement.dataset.nicho;
+        u.searchParams.set("utm_content", "lp-" + (n && n !== "geral" ? n + "-" : "") + v);
         a.href = u.href;
       }, true);
       if ("serviceWorker" in navigator) window.addEventListener("load", () => navigator.serviceWorker.register("/sw.js"));
