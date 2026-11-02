@@ -255,7 +255,7 @@ export default function LobsHero({ children, nicho }: { children?: ComponentChil
         <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(45%_40%_at_50%_100%,rgba(90,182,255,0.22),transparent),radial-gradient(30%_30%_at_10%_90%,rgba(255,138,15,0.10),transparent),radial-gradient(30%_30%_at_90%_90%,rgba(154,76,245,0.10),transparent)]" />
 
         {/* 1. headline */}
-        <div ref={heroRef} class="absolute inset-x-0 top-0 flex h-[64%] max-sm:h-[70%] flex-col items-center justify-center px-4 pt-16 text-center md:px-6">
+        <div ref={heroRef} class="absolute inset-x-0 top-0 flex h-[64%] max-sm:h-[70%] flex-col items-center justify-center-safe px-4 pt-[72px] text-center md:px-6 md:pt-[84px]">
           {children}
         </div>
 
