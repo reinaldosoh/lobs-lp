@@ -373,9 +373,128 @@ export const CONVERSATIONS_PSI: Conversation[] = [
   },
 ];
 
+/** As mesmas telas para studio de beleza (LP /beleza/): unha, make, cílios, sobrancelha e estética. */
+export const CONVERSATIONS_BELEZA: Conversation[] = [
+  {
+    id: "juliana",
+    name: "Juliana",
+    initials: "JU",
+    color: "#F9A8D4",
+    time: "09:12",
+    topic: "Unha em gel",
+    phone: "2041",
+    since: "outubro",
+    unread: 0,
+    stages: [{ at: 0, label: "Pediu valor" }, { at: 6, label: "Sinal pago" }],
+    knows: [{ at: 1, text: "Veio pelo Instagram" }, { at: 6, text: "Alongamento em gel com a Bia" }],
+    steps: [
+      { kind: "in", text: "Oi! Vi o post de vocês no Insta 😍 quanto tá o alongamento em gel?" },
+      { kind: "out", text: "Oi, Juliana! Que bom que gostou 💅 Sou a assistente do Studio Bia. O alongamento em gel é R$ 180 e leva umas 2h. Quer que eu veja um horário?" },
+      {
+        kind: "tool",
+        tool: { app: "Google Agenda", icon: "calendar", title: "3 horários livres encontrados", chips: ["Qui · 14h", "Sex · 10h", "Sáb · 9h"] },
+      },
+      { kind: "out", text: "Tenho quinta às 14h, sexta às 10h ou sábado às 9h. Qual fica melhor?" },
+      { kind: "in", text: "Sábado 9h!!" },
+      {
+        kind: "tool",
+        tool: { app: "Pix", icon: "pix", title: "Sinal gerado", lines: ["R$ 40,00 · garante o horário de sábado"], code: "00020126580014br.gov.bcb.pix0136…" },
+      },
+      { kind: "out", text: "Reservado! Pra garantir o horário é só o sinal de R$ 40 no Pix 👆 o resto você paga no dia. Te lembro na sexta ✨" },
+      { kind: "in", text: "Paguei! 🥰" },
+    ],
+  },
+  {
+    id: "fernanda",
+    name: "Fernanda",
+    initials: "FE",
+    color: "#C4B5FD",
+    time: "22:47",
+    topic: "Make de noiva",
+    phone: "7318",
+    since: "setembro",
+    unread: 1,
+    stages: [{ at: 0, label: "Pediu valor" }, { at: 6, label: "Prova marcada" }],
+    knows: [{ at: 1, text: "Casamento em 14/03" }, { at: 4, text: "Quer make leve, pele natural" }],
+    steps: [
+      { kind: "in", text: "Boa noite! Vou casar dia 14 de março e queria saber da make de noiva 👰" },
+      { kind: "out", text: "Que notícia linda, Fernanda! Parabéns 💜 A make de noiva da Bia inclui prova antes do grande dia. Ela atende no studio ou vai até você no dia." },
+      { kind: "tool", tool: { app: "Google Agenda", icon: "calendar", title: "14/03 está livre", lines: ["Sáb, 14/03 · reservar a manhã"] } },
+      { kind: "out", text: "O dia 14/03 ainda está livre na agenda dela! Você tem alguma referência do estilo que gosta?" },
+      { kind: "in", text: "Bem natural, pele iluminada. Mando foto amanhã!" },
+      { kind: "tool", tool: { app: "Google Agenda", icon: "calendar", title: "Prova marcada", lines: ["Prova de make · Bia", "Sáb, 17/01 · 10:00 · Studio"] } },
+      { kind: "out", text: "Perfeito! Já deixei a sua prova marcada pra 17/01 às 10h, e passei sua ideia pra Bia. Ela te chama pra fechar o valor certinho 🙂" },
+    ],
+  },
+  {
+    id: "paula",
+    name: "Paula",
+    initials: "PA",
+    color: "#FDBA74",
+    time: "10:00",
+    topic: "Manutenção",
+    phone: "5590",
+    since: "julho",
+    unread: 2,
+    stages: [{ at: 0, label: "Cliente fiel" }],
+    knows: [{ at: 0, text: "Faz cílios fio a fio a cada 20 dias" }, { at: 4, text: "Prefere fim da tarde" }],
+    steps: [
+      { kind: "system", text: "20 dias desde a última aplicação · o lob chamou a cliente" },
+      { kind: "out", text: "Oi, Paula! Já faz 20 dias dos seus cílios ✨ Quer garantir a manutenção essa semana?", time: "10:00" },
+      { kind: "in", text: "Quero sim! Tem quarta no fim da tarde?", time: "10:21" },
+      { kind: "tool", tool: { app: "Google Agenda", icon: "calendar", title: "Manutenção marcada", lines: ["Cílios fio a fio · manutenção", "Qua, 22/10 · 17:30"] } },
+      { kind: "out", text: "Tenho às 17h30! Já marquei pra você ✅ Te lembro na véspera.", time: "10:22" },
+      { kind: "in", text: "Amo vocês 😍", time: "10:23" },
+    ],
+  },
+  {
+    id: "carol",
+    name: "Carol",
+    initials: "CA",
+    color: "#86EFAC",
+    time: "07:58",
+    topic: "Remarcação",
+    phone: "1126",
+    since: "agosto",
+    unread: 0,
+    stages: [{ at: 0, label: "Sinal pago" }],
+    knows: [{ at: 1, text: "Sinal de R$ 30 já pago" }, { at: 5, text: "Horário de hoje liberado para outra" }],
+    steps: [
+      { kind: "in", text: "Bom dia! Meu filho acordou doente, não vou conseguir ir hoje às 10h 😞" },
+      { kind: "out", text: "Bom dia, Carol! Melhoras pra ele 💛 Como você avisou com antecedência, seu sinal continua valendo. Quer remarcar?" },
+      { kind: "in", text: "Quero! Pode ser sexta?" },
+      { kind: "tool", tool: { app: "Google Agenda", icon: "calendar", title: "Horário remarcado", lines: ["Design + henna · Hoje 10:00 → Sex 15:00"] } },
+      { kind: "out", text: "Prontinho: sexta às 15h, com o mesmo sinal ✅ E já ofereci o horário de hoje pra quem estava esperando." },
+      { kind: "system", text: "08:06 · Horário das 10h ocupado por outra cliente da lista de espera" },
+    ],
+  },
+  {
+    id: "duda",
+    name: "Duda",
+    initials: "DU",
+    color: "#93C5FD",
+    time: "16:48",
+    topic: "Retorno",
+    phone: "8847",
+    since: "setembro",
+    unread: 0,
+    stages: [{ at: 0, label: "Pediu valor" }, { at: 6, label: "Sinal pago" }],
+    knows: [{ at: 3, text: "Quer pé e mão no sábado" }],
+    steps: [
+      { kind: "in", text: "Oi, quanto fica pé e mão?" },
+      { kind: "out", text: "Oi, Duda! Pé e mão com esmaltação comum fica R$ 70, e com gel R$ 130. Quer que eu veja um horário?" },
+      { kind: "system", text: "2 dias sem resposta · o lob retomou a conversa" },
+      { kind: "out", text: "Oi, Duda! Passando só pra ver se ainda quer o pé e mão 💅 Abriu um horário sábado de manhã, quer que eu segure pra você?", time: "10:00" },
+      { kind: "in", text: "Quero! Sábado 10h dá?", time: "10:32" },
+      { kind: "tool", tool: { app: "Banco", icon: "bank", title: "Sinal confirmado", lines: ["R$ 20,00 recebido às 10:35"] } },
+      { kind: "out", text: "Dá sim! Sinal recebido e horário garantido: sábado, 10h ✅ Te lembro na sexta.", time: "10:36" },
+    ],
+  },
+];
+
 /** As conversas que a LP mostra para cada nicho. */
 export function conversasDo(nicho: Nicho = "geral") {
-  return nicho === "psi" ? CONVERSATIONS_PSI : CONVERSATIONS;
+  return nicho === "psi" ? CONVERSATIONS_PSI : nicho === "beleza" ? CONVERSATIONS_BELEZA : CONVERSATIONS;
 }
 
 /** Preview text for the sidebar: last message or tool title before `upTo`. */

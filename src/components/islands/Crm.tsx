@@ -2,46 +2,18 @@ import { useLayoutEffect, useMemo, useRef } from "preact/hooks";
 import Lob from "./Lob";
 import { Clock, Hourglass, Plus, Trophy } from "./icons";
 import { PanelFrame, ScaleToFit, useTick } from "./shared";
+import { dadosDo, type Funil, type Seed } from "./dados-do-nicho";
+import type { Nicho } from "../../variantes";
 
 /* O Kanban de um funil do painel do lobs (apps/web/src/componentes/funis.tsx), com clientes fictícios:
    abas de funis, colunas com bolinha, nome, contagem e soma em reais, e os cartões do painel. */
 
-type Coluna = { label: string; color: string; trophy?: boolean };
-const COLUNAS: Coluna[] = [
-  { label: "Novo contato", color: "#1f7df5" },
-  { label: "Proposta", color: "#9a4cf5" },
-  { label: "Fechou", color: "#16a34a", trophy: true },
-  { label: "Não fechou", color: "#8494a8" },
-];
-
-type Seed = { name: string; previa: string; value: number | null; stage: number; days: number; parado?: number; tag?: string };
-const INITIAL: Seed[] = [
-  { name: "Carla Mendes", previa: "Quanto custa o plano mensal?", value: 1200, stage: 0, days: 0, tag: "Instagram" },
-  { name: "João Pedro", previa: "Vocês atendem aos sábados?", value: 850, stage: 0, days: 1 },
-  { name: "Beatriz Lima", previa: "Quero conhecer a clínica", value: 2400, stage: 0, days: 2, parado: 3 },
-  { name: "Rodrigo Alves", previa: "Pode me mandar a proposta?", value: 3100, stage: 1, days: 1 },
-  { name: "Fernanda Costa", previa: "Vou ver com meu sócio", value: 690, stage: 1, days: 4, parado: 4 },
-  { name: "Lucas Martins", previa: "Proposta enviada · válida 7 dias", value: 4500, stage: 1, days: 2 },
-  { name: "Marcelo Dias", previa: "Pagamento confirmado", value: 2900, stage: 2, days: 1 },
-  { name: "Juliana Rocha", previa: "Contrato assinado", value: 1750, stage: 2, days: 3 },
-  { name: "Tatiane Souza", previa: "Fechei com outra empresa", value: 1100, stage: 3, days: 6 },
-];
-const INCOMING: { name: string; previa: string; value: number }[] = [
-  { name: "Patrícia Nunes", previa: "Oi! Vi o anúncio de vocês", value: 1300 },
-  { name: "Gustavo Reis", previa: "Preciso de um orçamento", value: 2200 },
-  { name: "Camila Torres", previa: "Tem horário essa semana?", value: 980 },
-  { name: "André Lopes", previa: "Quero fechar ainda hoje", value: 3600 },
-  { name: "Renata Freitas", previa: "Qual o prazo de entrega?", value: 1450 },
-  { name: "Felipe Moura", previa: "Podemos marcar uma call?", value: 2750 },
-  { name: "Larissa Pinto", previa: "Gostei, me manda o Pix", value: 760 },
-  { name: "Thiago Barros", previa: "Quanto fica no cartão?", value: 1980 },
-];
 const brl = (v: number) => `R$ ${v.toLocaleString("pt-BR")}`;
 
 type Lead = Seed & { id: number; at: number; byLob: boolean };
 
 /** Reproduz o funil até `tick` de forma determinística, para o servidor e o cliente concordarem. */
-function simulate(tick: number) {
+function simulate(tick: number, { inicial: INITIAL, chegando: INCOMING }: Funil) {
   let leads: Lead[] = INITIAL.map((s, i) => ({ ...s, id: i, at: -i, byLob: false }));
   let nextId = leads.length;
   let event: { lead: Lead; stage: number } | null = null;
@@ -104,9 +76,10 @@ function Cartao({ lead, highlighted, setRef }: { lead: Lead; highlighted: boolea
   );
 }
 
-function Panel() {
+function Panel({ funil }: { funil: Funil }) {
+  const COLUNAS = funil.colunas;
   const { ref, tick } = useTick<HTMLDivElement>(1700);
-  const state = useMemo(() => simulate(tick), [tick]);
+  const state = useMemo(() => simulate(tick, funil), [tick, funil]);
   const gridRef = useRef<HTMLDivElement>(null);
   const cards = useRef(new Map<number, HTMLElement>());
   const lastPos = useRef(new Map<number, { x: number; y: number }>());
@@ -147,7 +120,7 @@ function Panel() {
               <Lob still ticks={false} uid="aba-atendimento" color="blue" class="w-4" /> Atendimento
             </span>
             <span class="flex h-9 shrink-0 items-center gap-2 rounded-full border border-pn-brand/50 bg-pn-brand-soft px-3.5 text-[13.5px] font-semibold">
-              Vendas <span class="font-normal text-pn-muted tabular-nums">{state.leads.length}</span>
+              {funil.aba} <span class="font-normal text-pn-muted tabular-nums">{state.leads.length}</span>
             </span>
             <span class="flex h-9 shrink-0 items-center gap-1.5 rounded-full border border-dashed border-pn-border-strong px-3.5 text-[13.5px] text-pn-neutral">
               <Plus class="size-4" /> Novo funil
@@ -195,7 +168,7 @@ function Panel() {
             >
               <Lob still ticks={false} uid="crm" color="blue" class="size-6" />
               {event.stage === 2
-                ? `Venda fechada com ${event.lead.name.split(" ")[0]} · ${brl(event.lead.value ?? 0)}`
+                ? `${funil.fechou} ${event.lead.name.split(" ")[0]} · ${brl(event.lead.value ?? 0)}`
                 : `O lob moveu ${event.lead.name.split(" ")[0]} para ${COLUNAS[event.stage].label}`}
             </div>
           )}
@@ -205,10 +178,10 @@ function Panel() {
   );
 }
 
-export default function Crm() {
+export default function Crm({ nicho = "geral" }: { nicho?: Nicho }) {
   return (
     <ScaleToFit width={680}>
-      <Panel />
+      <Panel funil={dadosDo(nicho).funil} />
     </ScaleToFit>
   );
 }

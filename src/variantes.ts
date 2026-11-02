@@ -3,7 +3,7 @@
 
 export type Variante = "a" | "b";
 // Nicho da LP: "geral" é a LP de hoje; os outros trocam só o texto (o layout e os lobs são os mesmos).
-export type Nicho = "geral" | "psi";
+export type Nicho = "geral" | "psi" | "beleza";
 export type Cor = "blue" | "orange" | "green" | "pink" | "purple";
 export type Item = { titulo: string; texto: string };
 export type Pergunta = { p: string; r: string };
@@ -153,18 +153,20 @@ export const COPY_GERAL: Record<Variante, Copy> = {
 };
 
 import { COPY_PSI } from "./nichos/psi";
+import { COPY_BELEZA } from "./nichos/beleza";
 
-export const COPY: Record<Nicho, Record<Variante, Copy>> = { geral: COPY_GERAL, psi: COPY_PSI };
+export const COPY: Record<Nicho, Record<Variante, Copy>> = { geral: COPY_GERAL, psi: COPY_PSI, beleza: COPY_BELEZA };
 export const getCopy = (nicho: Nicho, v: Variante): Copy => COPY[nicho][v];
 
 // RASCUNHO: frases escritas a partir do perfil de cada cliente. Confirmar o texto com cada um antes de publicar.
-// Fotos: coloque em public/depoimentos/<arquivo> e preencha `foto`.
-export const DEPOIMENTOS: { nome: string; papel: string; frase: string; foto?: string; site?: string; cor: "pink" | "orange" | "purple" }[] = [
+// Fotos: coloque em public/depoimentos/<arquivo> e preencha `foto`. `nichos`: em quais LPs aparece (sem ele, só na geral).
+export const DEPOIMENTOS: { nome: string; papel: string; frase: string; foto?: string; site?: string; cor: "pink" | "orange" | "purple"; nichos?: Nicho[] }[] = [
   {
     nome: "Raquel Campos",
     papel: "Nail designer",
     frase: "Eu atendia com a mão ocupada e o WhatsApp lotado. Agora o lob marca e confirma os horários, e eu só olho a agenda cheia no fim do dia.",
     cor: "pink",
+    nichos: ["geral", "beleza"],
   },
   {
     nome: "Daniel Otero",

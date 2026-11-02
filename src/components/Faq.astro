@@ -15,9 +15,15 @@ const BASE: Pergunta[] = [
   { p: "Como funciona o follow-up automático?", r: "Você define o tempo, por exemplo 10 minutos sem resposta. Os lobs retomam a conversa com uma mensagem ou ligação natural, no contexto do que foi falado, e tenta de novo em intervalos que você escolhe." },
   { p: "Meus dados e os dos meus clientes estão seguros?", r: "Sim. As conversas são criptografadas em trânsito e em repouso, seguimos a LGPD e seus dados nunca são usados para treinar modelos de terceiros." },
 ];
-// Nos nichos o vocabulário muda ("paciente") e a pergunta do número já vem na lista do nicho.
-const paciente = (t: string) => t.replace(/clientes/g, "pacientes").replace(/\bcliente\b/g, "paciente");
-const base = nicho === "geral" ? BASE : BASE.filter((q) => !q.p.startsWith("Preciso trocar")).map((q) => ({ p: paciente(q.p), r: paciente(q.r) }));
+// Nos nichos o vocabulário muda (no consultório é "paciente"; no studio a "proposta" vira o sinal)
+// e a pergunta do número já vem na lista do nicho.
+const VOCABULARIO: Record<Nicho, (t: string) => string> = {
+  geral: (t) => t,
+  psi: (t) => t.replace("conversas e leads", "conversas e pacientes").replace(/clientes/g, "pacientes").replace(/\bcliente\b/g, "paciente"),
+  beleza: (t) => t.replace("geram proposta", "cobram o sinal, lembram a manutenção").replace("retornam um lead", "retornam uma cliente").replace("conversas e leads", "conversas e clientes"),
+};
+const fala = VOCABULARIO[nicho];
+const base = nicho === "geral" ? BASE : BASE.filter((q) => !q.p.startsWith("Preciso trocar")).map((q) => ({ p: fala(q.p), r: fala(q.r) }));
 const perguntas = [...getCopy(nicho, v).faq.inicio, ...base];
 ---
 <section id="faq" class="px-4 py-20 md:px-6 md:py-24"><div class="mx-auto max-w-[760px]"><h2 class="h-section text-center">Perguntas frequentes</h2><p class="mx-auto mt-3 max-w-[520px] text-center text-[16px] leading-[26px] text-muted">Tudo o que você precisa saber antes de colocar os lobs do seu lado.</p><div class="mt-10 border-t border-line">{perguntas.map((q) => <details class="group border-b border-line"><summary class="flex cursor-pointer list-none items-center justify-between gap-6 py-5 text-[16px] font-medium [&::-webkit-details-marker]:hidden">{q.p}<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4 shrink-0 text-muted transition-transform duration-200 group-open:rotate-45" aria-hidden="true"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg></summary><p class="-mt-1 pb-5 text-[15px] leading-[25px] text-muted">{q.r}</p></details>)}</div></div></section>

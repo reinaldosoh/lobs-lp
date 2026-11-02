@@ -37,7 +37,7 @@ const dep = !!c.depoimentos;
         <Plataforma v={v} nicho={nicho} />
         {cf && <Confianca {...cf} />}
         <Conectados v={v} nicho={nicho} />
-        <Plugin />
+        <Plugin nicho={nicho} />
         {dep && <Depoimentos v={v} nicho={nicho} />}
       </>
     ) : (
@@ -52,7 +52,7 @@ const dep = !!c.depoimentos;
         <Plataforma v={v} nicho={nicho} />
         {cf && <Confianca {...cf} />}
         <Conectados v={v} nicho={nicho} />
-        <Plugin />
+        <Plugin nicho={nicho} />
       </>
     )}
     <Planos v={v} nicho={nicho} />

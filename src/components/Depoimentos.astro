@@ -3,14 +3,15 @@ import Lob from "./islands/Lob";
 import { getCopy, DEPOIMENTOS, type Nicho, type Variante } from "../variantes";
 
 const { v, nicho = "geral" } = Astro.props as { v: Variante; nicho?: Nicho };
+const lista = DEPOIMENTOS.filter((d) => (d.nichos ?? ["geral"]).includes(nicho));
 const iniciais = (n: string) => n.split(" ").map((p) => p[0]).slice(0, 2).join("");
 const FUNDO = { pink: "from-[#ff7ac8] to-[#e0287f]", orange: "from-[#ffb057] to-[#f26a0f]", purple: "from-[#c08cff] to-[#8a3df0]" };
 ---
 <section id="depoimentos" class="px-4 py-20 md:px-6 md:py-24">
   <div class="mx-auto max-w-[1100px]">
     <h2 class="h-section text-center">{getCopy(nicho, v).depoimentos?.titulo}</h2>
-    <div class="mt-12 grid gap-4 md:grid-cols-3">
-      {DEPOIMENTOS.map((d, i) => (
+    <div class={`mt-12 grid gap-4 ${lista.length >= 3 ? "md:grid-cols-3" : "mx-auto max-w-[520px]"}`}>
+      {lista.map((d, i) => (
         <figure class="relative flex flex-col rounded-3xl border border-line bg-surface p-6 sm:p-7">
           <span class="absolute -top-5 right-6 w-11"><Lob still ticks uid={`dep-${i}`} color={d.cor} class="w-full" /></span>
           <blockquote class="flex-1 text-[16px] leading-[26px] text-ink">“{d.frase}”</blockquote>

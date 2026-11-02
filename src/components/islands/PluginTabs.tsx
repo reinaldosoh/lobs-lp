@@ -1,8 +1,58 @@
 import { useState } from "preact/hooks";
 import Lob from "./Lob";
+import type { ComponentChildren } from "preact";
 import { Check, LoaderCircle, Plus, Search } from "./icons";
+import type { Nicho } from "../../variantes";
 
 type Ferramenta = { nome: string; resumo: string };
+
+/** O diálogo de exemplo nas duas janelas, na língua de cada nicho. */
+type Falas = {
+  intro: string;
+  c1: string;
+  c1r: ComponentChildren;
+  c2: string;
+  c2r: string;
+  g1: string;
+  g1r: ComponentChildren;
+  g2: string;
+  g2r: string;
+};
+const FALAS: Record<Nicho, Falas> = {
+  geral: {
+    intro: "pergunta como foi o dia, vê os leads do funil e assume ou devolve atendimentos",
+    c1: "Como foram as conversas de hoje e quem precisa de mim?",
+    c1r: <>Hoje os lobs atenderam <b>42 conversas</b>. Três leads estão quentes e a <b>Ana Clara</b> pediu para falar com a equipe. Há <b>R$ 6.250</b> em propostas abertas e 2 clientes parados.</>,
+    c2: "Assuma a conversa da Ana Clara e mande o lob confirmar a call de amanhã.",
+    c2r: "Feito. A conversa está com você e a call com o Lucas ficou confirmada para amanhã às 10h.",
+    g1: "Quais leads estão parados no funil de vendas?",
+    g1r: <>Há <b>2 clientes parados</b>: <b>Fernanda Costa</b> (R$ 690, 4 dias) e <b>Beatriz Lima</b> (R$ 2.400, 3 dias). Os outros 9 estão andando e os lobs já fizeram o follow-up de 3 deles.</>,
+    g2: "Peça para o lob chamar a Fernanda hoje à tarde.",
+    g2r: "Combinado. O lob vai retomar a conversa com a Fernanda hoje às 15h, no contexto do que já foi falado, e eu te aviso quando ela responder.",
+  },
+  psi: {
+    intro: "pergunta como foi o dia, vê quem pediu horário e assume ou devolve atendimentos",
+    c1: "Como foi o dia no consultório e quem precisa de mim?",
+    c1r: <>Hoje os lobs atenderam <b>14 conversas</b> e marcaram <b>5 sessões</b>. A <b>Ana</b> pediu para falar com você e 2 pessoas pediram o valor e não voltaram.</>,
+    c2: "Assuma a conversa da Ana e confirme a sessão de amanhã do Bruno.",
+    c2r: "Feito. A conversa da Ana está com você e a sessão do Bruno ficou confirmada para amanhã às 18h30.",
+    g1: "Quem pediu horário e ainda não marcou?",
+    g1r: <><b>2 pessoas</b>: <b>Lia Moreira</b> (pediu o valor há 2 dias) e <b>Diego Nunes</b> (perguntou do reembolso ontem). Os lobs já retomaram a conversa com a Lia uma vez.</>,
+    g2: "Peça para o lob chamar a Lia hoje à tarde.",
+    g2r: "Combinado. O lob vai retomar a conversa com a Lia hoje às 15h, com cuidado e no contexto do que foi falado, e eu te aviso quando ela responder.",
+  },
+  beleza: {
+    intro: "pergunta como foi o dia, vê quem passou da manutenção e assume ou devolve atendimentos",
+    c1: "Como foi o dia no studio e quem precisa de mim?",
+    c1r: <>Hoje os lobs atenderam <b>23 conversas</b> e marcaram <b>9 horários</b>, com <b>R$ 280</b> em sinais pagos. A <b>Fernanda</b> mandou a foto de referência da make de noiva e quer falar com você.</>,
+    c2: "Assuma a conversa da Fernanda e confirme a manutenção da Paula amanhã.",
+    c2r: "Feito. A conversa da Fernanda está com você e a manutenção da Paula ficou confirmada para amanhã às 17h30.",
+    g1: "Quais clientes passaram do prazo da manutenção?",
+    g1r: <><b>3 clientes</b>: <b>Gabi Rocha</b> (gel, 24 dias), <b>Letícia Reis</b> (cílios, 22 dias) e <b>Marina Costa</b> (sobrancelha, 30 dias). Os lobs chamam as três amanhã às 10h.</>,
+    g2: "Peça para o lob chamar a Gabi hoje à tarde.",
+    g2r: "Combinado. O lob vai chamar a Gabi hoje às 15h com os horários livres da semana, e eu te aviso quando ela responder.",
+  },
+};
 
 /** Chip de ferramenta do plugin do lobs dentro do Claude (chamada de ferramenta, como ele mostra). */
 function ChamadaClaude({ f }: { f: Ferramenta }) {
@@ -17,7 +67,7 @@ function ChamadaClaude({ f }: { f: Ferramenta }) {
   );
 }
 
-function ClaudeJanela() {
+function ClaudeJanela({ f: t }: { f: Falas }) {
   return (
     <div class="overflow-hidden rounded-2xl border border-[#E8E2D6] bg-[#FAF9F5] text-[#3D3929] shadow-[0_24px_60px_-28px_rgba(11,27,46,0.45)]">
       <div class="flex items-center gap-1.5 border-b border-[#E8E2D6] bg-[#F5F3EC] px-4 py-2.5">
@@ -25,19 +75,17 @@ function ClaudeJanela() {
         <span class="ml-2 text-[12px] text-[#6B6757]">Claude</span>
       </div>
       <div class="flex flex-col gap-3 px-4 py-4 text-[14px] leading-[22px]">
-        <div class="max-w-[85%] self-end rounded-2xl bg-[#F0EEE6] px-3.5 py-2">Como foram as conversas de hoje e quem precisa de mim?</div>
+        <div class="max-w-[85%] self-end rounded-2xl bg-[#F0EEE6] px-3.5 py-2">{t.c1}</div>
         <div>
           <ChamadaClaude f={{ nome: "listar_conversas", resumo: "" }} />
           <ChamadaClaude f={{ nome: "ver_funil_vendas", resumo: "" }} />
-          <p class="mt-2 font-[ui-serif,Georgia,serif] text-[15px] leading-[23px]">
-            Hoje os lobs atenderam <b>42 conversas</b>. Três leads estão quentes e a <b>Ana Clara</b> pediu para falar com a equipe. Há <b>R$ 6.250</b> em propostas abertas e 2 clientes parados.
-          </p>
+          <p class="mt-2 font-[ui-serif,Georgia,serif] text-[15px] leading-[23px]">{t.c1r}</p>
         </div>
-        <div class="max-w-[85%] self-end rounded-2xl bg-[#F0EEE6] px-3.5 py-2">Assuma a conversa da Ana Clara e mande o lob confirmar a call de amanhã.</div>
+        <div class="max-w-[85%] self-end rounded-2xl bg-[#F0EEE6] px-3.5 py-2">{t.c2}</div>
         <div>
           <ChamadaClaude f={{ nome: "assumir_conversa", resumo: "" }} />
           <ChamadaClaude f={{ nome: "agenda_reservar", resumo: "" }} />
-          <p class="mt-2 font-[ui-serif,Georgia,serif] text-[15px] leading-[23px]">Feito. A conversa está com você e a call com o Lucas ficou confirmada para amanhã às 10h.</p>
+          <p class="mt-2 font-[ui-serif,Georgia,serif] text-[15px] leading-[23px]">{t.c2r}</p>
         </div>
       </div>
       <div class="m-3 mt-0 flex items-center gap-2 rounded-2xl border border-[#E8E2D6] bg-white px-3.5 py-2.5 text-[13.5px] text-[#8B8676]">
@@ -56,7 +104,7 @@ function ChamadaGpt({ nome, ok = true }: { nome: string; ok?: boolean }) {
   );
 }
 
-function GptJanela() {
+function GptJanela({ f: t }: { f: Falas }) {
   return (
     <div class="overflow-hidden rounded-2xl border border-[#e5e5e5] bg-white text-[#0d0d0d] shadow-[0_24px_60px_-28px_rgba(11,27,46,0.45)]">
       <div class="flex items-center gap-1.5 border-b border-[#ececec] bg-[#f9f9f9] px-4 py-2.5">
@@ -64,17 +112,15 @@ function GptJanela() {
         <span class="ml-2 text-[12px] text-[#6e6e80]">ChatGPT</span>
       </div>
       <div class="flex flex-col gap-3 px-4 py-4 text-[14px] leading-[22px]">
-        <div class="max-w-[85%] self-end rounded-3xl bg-[#f4f4f4] px-4 py-2">Quais leads estão parados no funil de vendas?</div>
+        <div class="max-w-[85%] self-end rounded-3xl bg-[#f4f4f4] px-4 py-2">{t.g1}</div>
         <div>
           <ChamadaGpt nome="ver_funil_vendas" />
-          <p class="mt-2">
-            Há <b>2 clientes parados</b>: <b>Fernanda Costa</b> (R$ 690, 4 dias) e <b>Beatriz Lima</b> (R$ 2.400, 3 dias). Os outros 9 estão andando e os lobs já fizeram o follow-up de 3 deles.
-          </p>
+          <p class="mt-2">{t.g1r}</p>
         </div>
-        <div class="max-w-[85%] self-end rounded-3xl bg-[#f4f4f4] px-4 py-2">Peça para o lob chamar a Fernanda hoje à tarde.</div>
+        <div class="max-w-[85%] self-end rounded-3xl bg-[#f4f4f4] px-4 py-2">{t.g2}</div>
         <div>
           <ChamadaGpt nome="agendar_followup" />
-          <p class="mt-2">Combinado. O lob vai retomar a conversa com a Fernanda hoje às 15h, no contexto do que já foi falado, e eu te aviso quando ela responder.</p>
+          <p class="mt-2">{t.g2r}</p>
         </div>
       </div>
       <div class="m-3 mt-0 flex items-center gap-2 rounded-full border border-[#e5e5e5] bg-white px-4 py-2.5 text-[13.5px] text-[#8e8ea0]">
@@ -84,7 +130,8 @@ function GptJanela() {
   );
 }
 
-export default function PluginTabs() {
+export default function PluginTabs({ nicho = "geral" }: { nicho?: Nicho }) {
+  const f = FALAS[nicho];
   const [aba, setAba] = useState<"claude" | "chatgpt">("claude");
   return (
     <div class="grid items-stretch gap-4 lg:grid-cols-[1fr_1.15fr]">
@@ -94,7 +141,7 @@ export default function PluginTabs() {
         </span>
         <h2 class="h-section mt-4 !text-left">Os lobs dentro do Claude e do ChatGPT</h2>
         <p class="mt-4 text-[16px] leading-[26px] text-ink/75 md:text-[18px] md:leading-[29px]">
-          Com o plugin do lobs você conecta sua conta e conversa com eles na ferramenta de IA que já usa: pergunta como foi o dia, vê os leads do funil e assume ou devolve atendimentos, sem abrir o painel.
+          Com o plugin do lobs você conecta sua conta e conversa com eles na ferramenta de IA que já usa: {f.intro}, sem abrir o painel.
         </p>
         <div class="mt-6 flex flex-wrap gap-2 text-[15px]" role="tablist" aria-label="Escolha a ferramenta">
           {(["claude", "chatgpt"] as const).map((t) => (
@@ -114,7 +161,7 @@ export default function PluginTabs() {
       </div>
       <div class="relative min-h-[600px] overflow-hidden rounded-3xl border border-line bg-[radial-gradient(90%_70%_at_0%_100%,#8CC8FA_0%,transparent_60%),radial-gradient(80%_70%_at_100%_0%,#D6F4FF_0%,transparent_60%),linear-gradient(160deg,#EAF6FF_0%,#BFE2FF_55%,#93CBF8_100%)]">
         <div key={aba} class="animate-fade-up absolute inset-x-5 top-7 sm:inset-x-8">
-          {aba === "claude" ? <ClaudeJanela /> : <GptJanela />}
+          {aba === "claude" ? <ClaudeJanela f={f} /> : <GptJanela f={f} />}
         </div>
         <div class="pointer-events-none absolute -right-4 -bottom-10 w-[130px]"><Lob still ticks uid="pl2" color="purple" class="w-full" /></div>
         <div class="pointer-events-none absolute -bottom-10 left-2 w-[110px]"><Lob still ticks uid="pl3" color="pink" class="w-full" /></div>

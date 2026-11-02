@@ -1,8 +1,11 @@
 ---
 import PluginTabs from "./islands/PluginTabs";
+import type { Nicho } from "../variantes";
+
+const { nicho = "geral" } = Astro.props as { nicho?: Nicho };
 ---
 <section id="plugin" class="px-4 py-20 md:px-6 md:py-24">
   <div class="mx-auto max-w-[1100px]">
-    <PluginTabs client:visible={{ rootMargin: "400px" }} />
+    <PluginTabs nicho={nicho} client:visible={{ rootMargin: "400px" }} />
   </div>
 </section>

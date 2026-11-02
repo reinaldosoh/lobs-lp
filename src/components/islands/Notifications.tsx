@@ -1,18 +1,13 @@
 import Lob, { LOB_ORDER } from "./Lob";
 import { WhatsAppIcon } from "./icons";
 import { useTick } from "./shared";
+import { dadosDo } from "./dados-do-nicho";
+import type { Nicho } from "../../variantes";
 
-const MESSAGES = [
-  "🔥 Lead quente: Ana quer fechar hoje. Já mandei a proposta.",
-  "🙋 Ricardo pediu pra falar com uma pessoa. Te passei a conversa.",
-  "📊 Resumo do dia: 42 atendimentos, 38 resolvidos sem você.",
-  "💰 Pagamento confirmado: R$ 1.290 de Antônio Carlos.",
-  "📞 Liguei pro Marcos e remarquei a visita pra quinta às 10h.",
-  "⏰ 3 leads sem resposta há 1 dia. Faço o follow-up amanhã às 9h.",
-];
 const AGES = ["agora", "2 min", "5 min", "9 min"];
 
-export default function Notifications() {
+export default function Notifications({ nicho = "geral" }: { nicho?: Nicho }) {
+  const MESSAGES = dadosDo(nicho).avisos;
   const { ref, tick } = useTick<HTMLDivElement>(2200);
   // Stack of the 4 latest notifications; the newest enters on top.
   const stack = Array.from({ length: 4 }, (_, i) => tick - i).filter((n) => n > -4);

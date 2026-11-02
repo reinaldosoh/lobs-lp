@@ -1,23 +1,11 @@
 import Lob, { LOB_ORDER } from "./Lob";
 import { Check, WhatsAppIcon } from "./icons";
 import { useTick } from "./shared";
+import { dadosDo } from "./dados-do-nicho";
+import type { Nicho } from "../../variantes";
 
-const CAMPAIGNS = [
-  { name: "Reativação de clientes", total: 312 },
-  { name: "Oferta de aniversário", total: 248 },
-  { name: "Pesquisa de satisfação", total: 405 },
-];
-const REPLIES: [string, string][] = [
-  ["Carla", "Quero sim! 🙌"],
-  ["João", "Ainda tem horário essa semana?"],
-  ["Bia", "Me manda os valores"],
-  ["Rodrigo", "Pode reservar pra mim"],
-  ["Fernanda", "Adorei, obrigada!"],
-  ["Lucas", "Qual o prazo?"],
-  ["Paula", "Tenho interesse 😍"],
-];
-
-export default function Campaigns() {
+export default function Campaigns({ nicho = "geral" }: { nicho?: Nicho }) {
+  const { campanhas: CAMPAIGNS, respostas: REPLIES } = dadosDo(nicho);
   const { ref, tick } = useTick<HTMLDivElement>(1200);
   // Each campaign runs for 10 ticks: 8 sending, then "Concluída".
   const round = Math.floor(tick / 10);
