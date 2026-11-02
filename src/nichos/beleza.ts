@@ -1,5 +1,5 @@
 // LP de beleza (/beleza/ e /beleza/b/): nail designers, manicures, maquiadoras, lash, sobrancelha e estética.
-// Só texto: o layout, os lobs e os planos são os da LP geral. O tom é o de quem atende com a mão ocupada e vive de agenda.
+// Só texto: o layout, os lobs e os planos são os da LP geral. O tom é o de quem vive de agenda (e sem frase que vire meme de duplo sentido).
 // Regras de comunicação: sem promessa de resultado estético, os valores e as regras de sinal são da profissional.
 import type { Copy, Item, Pergunta, Variante } from "../variantes";
 
@@ -77,7 +77,7 @@ export const COPY_BELEZA: Record<Variante, Copy> = {
   a: {
     hero: {
       etiqueta: "Agentes de IA para o WhatsApp do seu studio",
-      titulo: "Sua agenda enche sozinha enquanto você está com o pincel na mão.",
+      titulo: "Sua agenda enche sozinha enquanto você atende suas clientes.",
       subtitulo: "Os lobs respondem suas clientes no número que você já usa, mandam a tabela, marcam o horário, cobram o sinal no Pix e lembram a manutenção. Você só confere a agenda.",
       botao: "Testar grátis",
       secundario: { texto: "Ver um lob atendendo agora →", href: "demo" },
@@ -129,7 +129,7 @@ export const COPY_BELEZA: Record<Variante, Copy> = {
     problema: {
       titulo: "Onde suas clientes estão escapando",
       itens: [
-        { titulo: "Mão ocupada, celular apitando.", texto: "Você está no meio de uma aplicação e não dá para responder. Ela pergunta para a próxima da lista." },
+        { titulo: "Você atendendo, celular apitando.", texto: "Você está no meio de uma aplicação e não dá para responder. Ela pergunta para a próxima da lista." },
         { titulo: "“Quanto é?” às 23h.", texto: "A mensagem chega à noite, você responde de manhã. Ela já marcou com outra." },
         { titulo: "Falta sem aviso.", texto: "Sem sinal e sem lembrete, o horário fica vazio e ninguém ocupa." },
         { titulo: "Manutenção que ninguém lembrou.", texto: "Passou do prazo, a cliente não chamou e foi fazer em outro lugar." },
