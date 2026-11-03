@@ -92,14 +92,15 @@ const EMPRESA = {
 <p>Só com quem precisamos para o serviço funcionar, sob contrato e com sigilo:</p>
 <ul>
   <li>
-    <b>Provedores de inteligência artificial</b>: OpenAI (Estados Unidos) e DeepSeek (China)
-    para gerar as respostas, Google Gemini e Anthropic (Estados Unidos) como reserva quando os
-    outros falham, e Groq (Estados Unidos) para transcrever áudios. Recebem só o trecho
+    <b>Provedores de inteligência artificial</b>: OpenAI (Estados Unidos) para gerar as respostas, Google Gemini e Anthropic (Estados Unidos)
+    como reserva quando a primeira falha, e Groq (Estados Unidos) para transcrever áudios. Todos
+    são contratados por API, e os termos de API deles não permitem usar o conteúdo que enviamos
+    para treinar os modelos deles. Recebem só o trecho
     necessário da conversa e do manual. As notas e etiquetas da equipe não vão para a IA.
   </li>
   <li>
     <b>A IA da sua empresa</b>, se você escolher usá-la: as conversas vão para o provedor que
-    o seu negócio contratou (OpenAI, DeepSeek ou a assinatura do ChatGPT), na conta do seu
+    o seu negócio contratou (OpenAI, Anthropic, Google Gemini ou a assinatura do ChatGPT), na conta do seu
     negócio. Esse provedor é contratado por você e segue o contrato dele com você.
   </li>
   <li>
@@ -207,9 +208,7 @@ const EMPRESA = {
   comunicação usa HTTPS.
 </p>
 <p>
-  <b>Com quem compartilhamos:</b> com ninguém. Não vendemos, não alugamos, não usamos para
-  propaganda, não usamos para treinar modelos de inteligência artificial e não transferimos os
-  dados do Google a terceiros, exceto quando a lei obrigar. Pessoas do lobs só leem esses dados
+  <b>Com quem compartilhamos:</b> só com os provedores de inteligência artificial listados acima, e apenas o início, o fim e o significado da cor de cada evento (nunca o título nem a descrição), sob termos de API que não permitem usar esses dados para treinar modelos. Não vendemos, não alugamos, não usamos para propaganda, não usamos para treinar modelos de inteligência artificial e não transferimos os dados do Google a nenhum outro terceiro, exceto quando a lei obrigar. Pessoas do lobs só leem esses dados
   com a sua autorização, para dar suporte, ou quando a lei exigir.
 </p>
 <p>
@@ -247,8 +246,7 @@ const EMPRESA = {
   (AES-256) and is never shown in the dashboard. All traffic uses HTTPS.
 </p>
 <p>
-  <b>Sharing:</b> Google user data is not sold, rented, used for advertising, used to train AI
-  models, or transferred to third parties, except as required by law. lobs staff only read it with
+  <b>Sharing:</b> Google user data is shared only with the AI providers listed above (OpenAI, Google Gemini and Anthropic), and only the start time, end time and color meaning of each event (never the title or description), under API terms that do not allow that data to be used to train models. It is not sold, rented, used for advertising, used to train AI models, or transferred to any other third party, except as required by law. lobs staff only read it with
   the business's permission for support, or when required by law.
 </p>
 <p>
