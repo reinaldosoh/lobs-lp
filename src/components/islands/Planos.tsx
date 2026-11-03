@@ -32,7 +32,7 @@ const PLANOS: Plano[] = [
     desc: "Tudo do Essencial, com os lobs atendendo por você.",
     destaque: true,
     mensal: "119",
-    anual: { parcelas: "48,90", pix: "475" },
+    anual: { parcelas: "66,67", pix: "650" },
     itens: ["Tudo do plano Essencial", "Os lobs atendem 24h no WhatsApp", "Agendam, cobram e fazem follow-up sozinhos", "Ligações com voz natural", "Tudo registrado no painel"],
   },
 ];
