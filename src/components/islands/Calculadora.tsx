@@ -52,7 +52,7 @@ export default function Calculadora({ rotulos }: { rotulos?: Rotulos }) {
         <p class="text-[16px] text-white/70">Você pode estar deixando</p>
         <p class="mt-1 text-[44px] leading-[1.05] font-medium tracking-[-0.03em] tabular-nums sm:text-[56px]">{brl(total)}</p>
         <p class="mt-1 text-[16px] text-white/70">por mês na mesa.</p>
-        <p class="mt-6 border-t border-white/15 pt-5 text-[15px] text-white/80">O plano com IA custa R$ 146/mês.</p>
+        <p class="mt-6 border-t border-white/15 pt-5 text-[15px] text-white/80">O plano com IA custa R$ 119/mês.</p>
         <a href={CADASTRO_URL} class="btn-glossy mt-6 inline-flex h-[52px] items-center justify-center rounded-full px-7 text-[17px]">
           Recuperar esses clientes
         </a>

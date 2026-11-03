@@ -22,8 +22,8 @@ const PLANOS: Plano[] = [
     nome: "Essencial",
     codigo: "essencial",
     desc: "O painel do lobs para a sua equipe atender.",
-    mensal: "96",
-    anual: { parcelas: "39,90", pix: "386" },
+    mensal: "69",
+    anual: { parcelas: "28,90", pix: "279" },
     itens: ["Conversas do WhatsApp no painel", "CRM e Kanban de clientes", "Campanhas e avisos no seu WhatsApp", "Sua equipe assume qualquer conversa"],
   },
   {
@@ -31,8 +31,8 @@ const PLANOS: Plano[] = [
     codigo: "lobs-ia",
     desc: "Tudo do Essencial, com os lobs atendendo por você.",
     destaque: true,
-    mensal: "146",
-    anual: { parcelas: "59,90", pix: "589" },
+    mensal: "119",
+    anual: { parcelas: "48,90", pix: "475" },
     itens: ["Tudo do plano Essencial", "Os lobs atendem 24h no WhatsApp", "Agendam, cobram e fazem follow-up sozinhos", "Ligações com voz natural", "Tudo registrado no painel"],
   },
 ];
@@ -119,7 +119,7 @@ export default function Planos({ notaComIa }: { notaComIa?: string }) {
           </div>
         ))}
       </div>
-      <p class="mt-6 text-center text-[14px] text-muted">Teste grátis, sem cartão de crédito. Cancele quando quiser.</p>
+      <p class="mt-6 text-center text-[14px] text-muted">Preço de lançamento. Teste grátis, sem cartão de crédito. Cancele quando quiser.</p>
     </div>
   );
 }
