@@ -11,7 +11,7 @@ const EMPRESA = {
   foro: 'Belo Horizonte/MG',
 };
 ---
-<Legal titulo="Política de privacidade" caminho="/privacidade" descricao="Como o lobs trata dados pessoais (LGPD) e os dados do Google Agenda (Uso Limitado).">
+<Legal titulo="Política de privacidade" caminho="/privacidade" descricao="Como o lobs trata dados pessoais (LGPD) e os dados do Google (Uso Limitado), inclusive no LOBS Personal.">
 <p>
   Esta política explica como o {EMPRESA.nome} ({EMPRESA.razaoSocial}, CNPJ {EMPRESA.cnpj})
   trata dados pessoais, de acordo com a Lei Geral de Proteção de Dados (Lei 13.709/2018,
@@ -189,8 +189,9 @@ const EMPRESA = {
   <b>Quais dados do Google acessamos:</b> o endereço de e-mail da conta Google conectada (para
   mostrar qual conta está ligada); a lista das agendas da conta (para você escolher quais o lobs
   usa); e, só nas agendas que você escolher, os eventos: título, descrição, data e hora de início
-  e de fim, cor, se é de dia inteiro e se aparece como "ocupado" ou "disponível". Não acessamos
-  Gmail, contatos, Drive nem nenhum outro dado da conta.
+  e de fim, cor, se é de dia inteiro e se aparece como "ocupado" ou "disponível". Para empresas, não
+  acessamos Gmail, contatos, Drive nem nenhum outro dado da conta (o LOBS Personal tem a sua
+  seção, 8.1).
 </p>
 <p>
   <b>Para que usamos:</b> (1) saber quais horários estão ocupados, para o atendente do lobs nunca
@@ -226,12 +227,52 @@ const EMPRESA = {
   , incluindo os requisitos de Uso Limitado.
 </p>
 
+<h3>8.1 LOBS Personal (o assistente pessoal no WhatsApp)</h3>
+<p>
+  No LOBS Personal, quem conecta a conta Google é a própria pessoa, em pessoal.lobsbot.com.br,
+  para que o assistente a ajude com os próprios compromissos e arquivos. A conexão só acontece
+  com a autorização dela na tela de permissão do Google e pode ser desfeita a qualquer
+  momento.
+</p>
+<p>
+  <b>Quais dados do Google acessamos:</b> o e-mail da conta conectada; os eventos da agenda
+  principal (título, descrição, local, data e hora, link do Meet) que a pessoa pede para ver,
+  marcar, mudar ou cancelar; as tarefas do Google Tarefas (título, notas, data e se está
+  feita); nos Contatos, só o nome, o e-mail e o telefone dos contatos que a pessoa pede para
+  procurar; e, no Google Drive, só os arquivos que o próprio LOBS cria a pedido dela (Docs,
+  Planilhas e Apresentações; o LOBS não vê os outros arquivos do Drive). Não acessamos o
+  Gmail.
+</p>
+<p>
+  <b>Para que usamos:</b> só para atender o que a pessoa pede na conversa (por exemplo, "o que
+  eu tenho amanhã?", "marca uma reunião com Meet sexta às 15h", "cria uma tarefa", "qual o
+  e-mail do João?", "monta essa planilha no meu Drive"). Para responder, o assistente de
+  inteligência artificial recebe os dados do Google necessários para aquele pedido.
+</p>
+<p>
+  <b>Com quem compartilhamos:</b> só com os provedores de inteligência artificial que geram as
+  respostas (OpenAI, Google Gemini e Anthropic), sob termos que não permitem usar esses dados
+  para treinar modelos; na conta da OpenAI usada pela plataforma, o uso para melhorar os
+  modelos fica desligado. Não vendemos, não usamos para propaganda, não usamos para treinar
+  modelos e não transferimos a nenhum outro terceiro, exceto quando a lei obrigar.
+</p>
+<p>
+  <b>Como guardamos, por quanto tempo e como apagar:</b> a autorização do Google (token) fica
+  cifrada (AES-256). Os dados do Google não são copiados para o nosso banco: são lidos na hora
+  do pedido; ficam apenas no histórico da conversa da pessoa com o LOBS (as últimas mensagens,
+  para o assistente lembrar o contexto). Ao desconectar (Ajustes &gt; Integrações &gt; Google
+  em pessoal.lobsbot.com.br, ou em https://myaccount.google.com/permissions), o acesso é
+  revogado no Google na hora. Os arquivos criados no Drive continuam sendo da pessoa. A
+  exclusão da conversa pode ser pedida pelo e-mail contato@soureino.com.
+</p>
+
+
 <h3>Google user data (Google Calendar), in English</h3>
 <p>
   <b>Data accessed:</b> the email address of the connected Google account; the list of its
   calendars; and, only on the calendars the business selects, the events (title, description,
-  start and end time, color, all-day flag and busy/free status). No Gmail, Contacts, Drive or other
-  Google data is accessed.
+  start and end time, color, all-day flag and busy/free status). For businesses, no Gmail, Contacts,
+  Drive or other Google data is accessed (LOBS Personal is described below).
 </p>
 <p>
   <b>Use:</b> to know which times are busy so the lobs assistant never offers a customer an
@@ -264,6 +305,32 @@ const EMPRESA = {
   </a>
   , including the Limited Use requirements.
 </p>
+
+<h3>LOBS Personal (personal assistant on WhatsApp), in English</h3>
+<p>
+  <b>Data accessed:</b> the email of the Google account the person connects at
+  pessoal.lobsbot.com.br; events of the primary calendar (title, description, location, time,
+  Meet link) the person asks to see, create, change or cancel; Google Tasks (title, notes, due
+  date, status); only name, email and phone of contacts the person asks to look up; and in
+  Google Drive only the files LOBS itself creates at the person's request (Docs, Sheets,
+  Slides, via the drive.file scope). Gmail is not accessed.
+</p>
+<p>
+  <b>Use and sharing:</b> only to fulfill what the person asks in the conversation. To answer,
+  the AI assistant receives the Google data needed for that request, through the AI providers
+  listed above (OpenAI, Google Gemini, Anthropic) under terms that do not allow training on it
+  (model improvement is turned off on the platform's OpenAI account). Not sold, not used for
+  ads, not used to train models, not transferred to other third parties except as required by
+  law.
+</p>
+<p>
+  <b>Storage and deletion:</b> the Google token is stored encrypted (AES-256); Google data is
+  read on demand and not copied to our database, except as part of the person's recent
+  conversation history with LOBS. Disconnecting (Ajustes &gt; Integrações &gt; Google, or
+  https://myaccount.google.com/permissions) revokes access at Google immediately. Deletion of
+  the conversation can be requested at contato@soureino.com.
+</p>
+
 
 <h2>9. Armazenamento no navegador e métricas</h2>
 <p>
