@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /logo
+Disallow: /cdn-cgi/
 
 Sitemap: https://lobsbot.com.br/sitemap.xml
