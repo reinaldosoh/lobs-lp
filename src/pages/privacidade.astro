@@ -275,7 +275,7 @@ const EMPRESA = {
   O LOBS só lê ou age nesses serviços quando a pessoa pede na conversa, e antes de criar, mudar
   ou apagar algo mostra o que vai fazer e espera a confirmação. O conteúdo lido é usado só para
   responder ao pedido, passa pelos mesmos provedores de inteligência artificial (que não treinam
-  com ele) e não é copiado para o nosso banco, exceto no histórico recente da conversa. Para ler um site ou buscar passagens a pedido da pessoa, o endereço do site vai ao Firecrawl e a rota, as datas e a quantidade de passageiros vão à SerpApi (que consulta o Google Flights); nenhum outro dado da pessoa vai junto.
+  com ele) e não é copiado para o nosso banco, exceto no histórico recente da conversa. Para ler um site ou buscar passagens a pedido da pessoa, o endereço do site vai ao Firecrawl e a rota, as datas e a quantidade de passageiros vão à SerpApi (que consulta o Google Flights); nenhum outro dado da pessoa vai junto. Se a pessoa conectar a conta dela nesses serviços, a chave fica guardada cifrada (AES-256), nunca é mostrada de volta e pode ser removida a qualquer momento.
 </p>
 
 <h3>Google user data (Google Calendar), in English</h3>
@@ -350,7 +350,7 @@ const EMPRESA = {
   revoked at any time. LOBS reads or acts on these services only when the user asks, and asks for
   confirmation before creating, changing or deleting anything. Content is used only to answer the
   request, goes through the same AI providers (no training on it) and is not copied to our
-  database except as part of the recent conversation history. To read a website or search flights at the user's request, the website address is sent to Firecrawl, and the route, dates and number of passengers are sent to SerpApi (which queries Google Flights); no other user data is sent.
+  database except as part of the recent conversation history. To read a website or search flights at the user's request, the website address is sent to Firecrawl, and the route, dates and number of passengers are sent to SerpApi (which queries Google Flights); no other user data is sent. If the user connects their own account on these services, the API key is stored encrypted (AES-256), never shown back, and can be removed at any time.
 </p>
 
 <h2>9. Armazenamento no navegador e métricas</h2>
