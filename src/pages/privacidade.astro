@@ -278,6 +278,11 @@ const EMPRESA = {
   com ele) e não é copiado para o nosso banco, exceto no histórico recente da conversa. Para ler um site ou buscar passagens a pedido da pessoa, o endereço do site vai ao Firecrawl e a rota, as datas e a quantidade de passageiros vão à SerpApi (que consulta o Google Flights); nenhum outro dado da pessoa vai junto. Se a pessoa conectar a conta dela nesses serviços, a chave fica guardada cifrada (AES-256), nunca é mostrada de volta e pode ser removida a qualquer momento.
 </p>
 
+<h3>8.3 LOBS Personal: conexões de confiança</h3>
+<p>
+A pessoa pode conectar o LOBS dela com o LOBS de pessoas em quem confia (Ajustes &gt; Conexões). A conexão só existe depois que as duas aceitam. Cada pessoa escolhe o que a outra pode fazer do lado dela: mandar recados, ver se ela está livre ou ocupada (só os horários, nunca o assunto dos compromissos) e marcar na agenda dela (desligado por padrão, ou só com confirmação). O outro lado vê o nome da pessoa. Recados e pedidos entre conexões ficam registrados por 30 dias, e a conexão pode ser pausada ou desfeita a qualquer momento, pelas duas.
+</p>
+
 <h3>Google user data (Google Calendar), in English</h3>
 <p>
   <b>Data accessed:</b> the email address of the connected Google account; the list of its
@@ -351,6 +356,11 @@ const EMPRESA = {
   confirmation before creating, changing or deleting anything. Content is used only to answer the
   request, goes through the same AI providers (no training on it) and is not copied to our
   database except as part of the recent conversation history. To read a website or search flights at the user's request, the website address is sent to Firecrawl, and the route, dates and number of passengers are sent to SerpApi (which queries Google Flights); no other user data is sent. If the user connects their own account on these services, the API key is stored encrypted (AES-256), never shown back, and can be removed at any time.
+</p>
+
+<h3>LOBS Personal: trusted connections, in English</h3>
+<p>
+Users may connect their LOBS with the LOBS of people they trust (Settings &gt; Connections). A connection exists only after both accept. Each user chooses what the other may do on their side: send messages, see whether they are free or busy (times only, never event details) and add events to their calendar (off by default, or only after confirmation). Messages and requests between connections are kept for 30 days, and either user can pause or remove the connection at any time.
 </p>
 
 <h2>9. Armazenamento no navegador e métricas</h2>
