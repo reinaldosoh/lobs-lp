@@ -57,9 +57,9 @@ const ogAlt = "lobs: " + getCopy(nicho, variante).hero.titulo;
     <link rel="preload" href="/fonts/797e433ab948586e-s.p.1v5bejj26fx9h.woff2" as="font" type="font/woff2" crossorigin />
   </head>
   <body class="min-h-full bg-bg text-ink">
-    <Fragment set:html="<!--email_off-->" />
+    <Fragment set:html={"<!--email_off-->"} />
     <slot />
-    <Fragment set:html="<!--/email_off-->" />
+    <Fragment set:html={"<!--/email_off-->"} />
     <script is:inline>
       // Marca a variante do teste A/B nos links do app, para ligar o cadastro à página que o trouxe.
       document.addEventListener("click", (e) => {

@@ -35,9 +35,9 @@ const [ano, mes, dia] = VERSAO.slice(0, 10).split("-");
         <h1 class="m-0 text-[26px] font-semibold tracking-[-0.02em]">{titulo}</h1>
         <p class="mt-1 text-[13.5px] text-[#6b7a90]">Versão em vigor desde {dia}/{mes}/{ano}.</p>
         <div class="legal mt-6 text-[15px] leading-relaxed text-[#3b4658]">
-          <Fragment set:html="<!--email_off-->" />
+          <Fragment set:html={"<!--email_off-->"} />
           <slot />
-          <Fragment set:html="<!--/email_off-->" />
+          <Fragment set:html={"<!--/email_off-->"} />
         </div>
       </main>
       <p class="mt-6 text-center text-[13px] text-[#6b7a90]">
