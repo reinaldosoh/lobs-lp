@@ -92,10 +92,7 @@ const EMPRESA = {
 <p>Só com quem precisamos para o serviço funcionar, sob contrato e com sigilo:</p>
 <ul>
   <li>
-    <b>Provedores de inteligência artificial</b>: OpenAI (Estados Unidos) para gerar as respostas, Google Gemini e Anthropic (Estados Unidos)
-    como reserva quando a primeira falha, e Groq (Estados Unidos) para transcrever áudios. Todos
-    são contratados por API, e os termos de API deles não permitem usar o conteúdo que enviamos
-    para treinar os modelos deles. Recebem só o trecho
+    <b>Provedores de modelos de inteligência artificial</b> (nos Estados Unidos), que geram o texto das respostas, transcrevem áudios e geram voz. O lobs é uma tecnologia própria (as regras, a memória, as ferramentas, a segurança e a forma de decidir o que fazer são nossas) e usa esses modelos como peças, contratados por API, sob termos que não permitem usar o conteúdo que enviamos para treinar os modelos deles. A lista atualizada desses fornecedores é informada a quem pedir ao encarregado (item 10). Recebem só o trecho
     necessário da conversa e do manual. As notas e etiquetas da equipe não vão para a IA.
   </li>
   <li>
@@ -251,9 +248,7 @@ const EMPRESA = {
 </p>
 <p>
   <b>Com quem compartilhamos:</b> só com os provedores de inteligência artificial que geram as
-  respostas (OpenAI, Google Gemini e Anthropic), sob termos que não permitem usar esses dados
-  para treinar modelos; na conta da OpenAI usada pela plataforma, o uso para melhorar os
-  modelos fica desligado. Não vendemos, não usamos para propaganda, não usamos para treinar
+  respostas (item 4), sob termos que não permitem usar esses dados para treinar modelos; o uso para melhorar os modelos fica desligado onde o provedor oferece essa opção. Não vendemos, não usamos para propaganda, não usamos para treinar
   modelos e não transferimos a nenhum outro terceiro, exceto quando a lei obrigar.
 </p>
 <p>
@@ -281,11 +276,25 @@ const EMPRESA = {
 <h3>8.3 LOBS Personal: conexões de confiança</h3>
 <p>
 A pessoa pode conectar o LOBS dela com o LOBS de pessoas em quem confia (Ajustes &gt; Conexões). A conexão só existe depois que as duas aceitam. Cada pessoa escolhe o que a outra pode fazer do lado dela: mandar recados, ver se ela está livre ou ocupada (só os horários, nunca o assunto dos compromissos) e marcar na agenda dela (desligado por padrão, ou só com confirmação). O outro lado vê o nome da pessoa. Recados e pedidos entre conexões ficam registrados por 30 dias, e a conexão pode ser pausada ou desfeita a qualquer momento, pelas duas.
- A pessoa pode apagar a conta a qualquer momento em Ajustes &gt; Apagar minha conta: somem a memória, os lembretes, os documentos, a conversa, as integrações, as conexões e o acesso ao Google (revogado no próprio Google). Quando a pessoa pede um lembrete por ligação, o LOBS liga para o próprio número dela pelo WhatsApp e fala o lembrete; a voz é gerada pela ElevenLabs a partir do texto do lembrete, e a ligação não é gravada.</p>
+ A pessoa pode apagar a conta a qualquer momento em Ajustes &gt; Apagar minha conta: somem a memória, os lembretes, os documentos, a conversa, as integrações, as conexões e o acesso ao Google (revogado no próprio Google). Quando a pessoa pede um lembrete por ligação, o LOBS liga para o próprio número dela pelo WhatsApp e fala o lembrete; a voz é gerada por um provedor de voz contratado pelo lobs a partir do texto do lembrete, e a ligação não é gravada.</p>
 
 <h3>8.4 LOBS Personal: Gmail</h3>
 <p>
 A pessoa pode conectar o Gmail dela (Ajustes &gt; Integrações ou pelo link que o LOBS manda no WhatsApp). Com a autorização, o LOBS busca e lê e-mails e envia e-mails, sempre a pedido da própria pessoa na conversa. Para enviar, o LOBS sempre mostra o e-mail antes e só envia depois que a pessoa confirma. O conteúdo dos e-mails é usado só para atender o pedido da pessoa, passa pelos mesmos provedores de inteligência artificial (que não treinam com ele), não é vendido, não é usado para publicidade nem para treinar modelos de IA, e não é guardado no nosso banco além do histórico recente da conversa; rascunhos de envio são apagados em até 1 dia. A autorização (token) fica cifrada (AES-256) e é revogada no Google quando a pessoa desconecta.
+</p>
+
+<h3>8.5 LOBS Personal: missões (tarefas de longo prazo)</h3>
+<p>
+A pessoa pode pedir que o LOBS acompanhe uma tarefa por dias ou semanas (por exemplo, procurar vagas ou acompanhar um preço). Para isso, o LOBS guarda o objetivo e o plano combinados, um caderno curto com o que aprendeu e um resumo de até 300 caracteres de cada resultado que já viu, para não repetir avisos. Nada do Gmail nem do Google entra nesses registros. A pessoa pode pausar ou cancelar a missão a qualquer momento pela conversa; os registros de uma missão encerrada são apagados em até 180 dias e somem com a conta.
+</p>
+<h3>8.6 LOBS Personal: Cofre e navegador</h3>
+<p>
+A pessoa pode guardar no Cofre o login de um site (por exemplo, o da companhia de luz) para o LOBS entrar por ela e trazer o que ela pedir, como a fatura do mês. O login e a senha são digitados só numa página nossa, por um link de uso único, nunca na conversa; ficam cifrados (AES-256) e só são usados no endereço que a pessoa confirmou. Para isso, o LOBS abre um navegador no nosso servidor, só lê e baixa (não paga, não contrata nem altera nada) e guarda o caminho que funcionou e, por até 30 dias, a sessão do site (cifrada), para não pedir código toda vez. O que ele lê no site é usado para responder à pessoa e passa pelos mesmos provedores de inteligência artificial (que não treinam com ele); a senha nunca vai para a inteligência artificial. Se o site pedir uma verificação de robô, o LOBS manda um link para a própria pessoa resolver na tela do navegador dele; a imagem da tela e os toques ficam só durante essa sessão (até 15 minutos) e são apagados em seguida. A pessoa apaga um login quando quiser, no WhatsApp ou em Ajustes &gt; Cofre, e tudo some com a conta.
+</p>
+
+<h3>8.7 LOBS Personal: e-mail do LOBS</h3>
+<p>
+Cada pessoa pode ter um endereço de e-mail só dela no LOBS (por exemplo, nome-k7m2@lobsbot.com.br) para encaminhar faturas, boletos e avisos sem conectar o Gmail. O endereço tem um final aleatório, e endereço que não existe é recusado na hora. Cada mensagem que chega é guardada cifrada (AES-256) por 30 dias e então apagada. O LOBS lê a mensagem para marcar sinais de golpe e de fatura e só avisa a pessoa quando importa; o resto fica guardado para quando ela perguntar. O conteúdo é usado só para atender a pessoa, passa pelos mesmos provedores de inteligência artificial (que não treinam com ele) e não é vendido nem usado para publicidade. A pessoa troca o endereço quando quiser pela conversa (o antigo para de funcionar), e tudo some com a conta.
 </p>
 
 <h3>Google user data (Google Calendar), in English</h3>
@@ -308,7 +317,7 @@ A pessoa pode conectar o Gmail dela (Ajustes &gt; Integrações ou pelo link que
   (AES-256) and is never shown in the dashboard. All traffic uses HTTPS.
 </p>
 <p>
-  <b>Sharing:</b> Google user data is shared only with the AI providers listed above (OpenAI, Google Gemini and Anthropic), and only the start time, end time and color meaning of each event (never the title or description), under API terms that do not allow that data to be used to train models. It is not sold, rented, used for advertising, used to train AI models, or transferred to any other third party, except as required by law. lobs staff only read it with
+  <b>Sharing:</b> Google user data is shared only with the AI model providers described in section 4, and only the start time, end time and color meaning of each event (never the title or description), under API terms that do not allow that data to be used to train models. It is not sold, rented, used for advertising, used to train AI models, or transferred to any other third party, except as required by law. lobs staff only read it with
   the business's permission for support, or when required by law.
 </p>
 <p>
@@ -338,9 +347,7 @@ A pessoa pode conectar o Gmail dela (Ajustes &gt; Integrações ou pelo link que
 </p>
 <p>
   <b>Use and sharing:</b> only to fulfill what the person asks in the conversation. To answer,
-  the AI assistant receives the Google data needed for that request, through the AI providers
-  listed above (OpenAI, Google Gemini, Anthropic) under terms that do not allow training on it
-  (model improvement is turned off on the platform's OpenAI account). Not sold, not used for
+  the AI assistant receives the Google data needed for that request, through the AI model providers described in section 4, under terms that do not allow training on it (model improvement is turned off wherever the provider offers that option). Not sold, not used for
   ads, not used to train models, not transferred to other third parties except as required by
   law.
 </p>
@@ -366,11 +373,16 @@ A pessoa pode conectar o Gmail dela (Ajustes &gt; Integrações ou pelo link que
 <h3>LOBS Personal: trusted connections, in English</h3>
 <p>
 Users may connect their LOBS with the LOBS of people they trust (Settings &gt; Connections). A connection exists only after both accept. Each user chooses what the other may do on their side: send messages, see whether they are free or busy (times only, never event details) and add events to their calendar (off by default, or only after confirmation). Messages and requests between connections are kept for 30 days, and either user can pause or remove the connection at any time.
- Users can delete their account at any time in Settings &gt; Delete my account: memory, reminders, documents, the conversation, integrations, connections and Google access (revoked at Google) are all removed. When the user asks for a reminder by call, LOBS calls their own number over WhatsApp and speaks the reminder; the voice is generated by ElevenLabs from the reminder text, and the call is not recorded.</p>
+ Users can delete their account at any time in Settings &gt; Delete my account: memory, reminders, documents, the conversation, integrations, connections and Google access (revoked at Google) are all removed. When the user asks for a reminder by call, LOBS calls their own number over WhatsApp and speaks the reminder; the voice is generated by a voice provider contracted by lobs from the reminder text, and the call is not recorded.</p>
 
 <h3>LOBS Personal: Gmail, in English</h3>
 <p>
 Users may connect their Gmail account. LOBS searches, reads and sends email only when the user asks in the conversation, and always shows an outgoing email for the user's confirmation before sending it. LOBS Personal's use and transfer of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements. Gmail content is used only to fulfill the user's request, is never sold, never used for advertising and never used to train AI models, and is not stored beyond the recent conversation history; drafts are deleted within one day. The authorization token is stored encrypted (AES-256) and is revoked at Google when the user disconnects.
+</p>
+
+<h3>LOBS Personal: LOBS email address, in English</h3>
+<p>
+Each user may get an email address of their own at LOBS (for example, name-k7m2@lobsbot.com.br) to forward bills and notices without connecting Gmail. The address ends in a random code, and mail to addresses that do not exist is rejected. Each incoming message is stored encrypted (AES-256) for 30 days and then deleted. LOBS reads it to flag scam and bill signals and only notifies the user when it matters. The content is used only to serve the user, goes through the same AI model providers (no training on it), and is never sold or used for advertising. The user can change the address at any time in the conversation (the old one stops working), and everything is deleted with the account.
 </p>
 
 <h2>9. Armazenamento no navegador e métricas</h2>
