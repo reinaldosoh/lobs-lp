@@ -273,6 +273,11 @@ const EMPRESA = {
   com ele) e não é copiado para o nosso banco, exceto no histórico recente da conversa. Para ler um site ou buscar passagens a pedido da pessoa, o endereço do site vai ao Firecrawl e a rota, as datas e a quantidade de passageiros vão à SerpApi (que consulta o Google Flights); nenhum outro dado da pessoa vai junto. Se a pessoa conectar a conta dela nesses serviços, a chave fica guardada cifrada (AES-256), nunca é mostrada de volta e pode ser removida a qualquer momento.
 </p>
 
+<h3>8.2.1 LOBS Personal: Calendário do iPhone (iCloud)</h3>
+<p>
+A pessoa pode conectar o Calendário do iPhone (Ajustes &gt; Integrações ou pelo link que o LOBS manda no WhatsApp) com o Apple ID e uma senha de app, que ela mesma cria na conta Apple só para o LOBS e pode apagar lá a qualquer momento (a senha normal do Apple ID nunca é pedida). O Apple ID e a senha de app ficam cifrados (AES-256), nunca são mostrados de volta e só são usados para falar com o iCloud da Apple. O LOBS lê, cria, muda e apaga eventos da agenda só quando a pessoa pede na conversa, e antes de apagar confirma. Os eventos lidos são usados só para responder ao pedido, passam pelos mesmos provedores de inteligência artificial (que não treinam com eles) e não são copiados para o nosso banco, exceto no histórico recente da conversa. Ao desconectar ou apagar a conta, o Apple ID e a senha de app são apagados; nada é apagado na agenda dela.
+</p>
+
 <h3>8.3 LOBS Personal: conexões de confiança</h3>
 <p>
 A pessoa pode conectar o LOBS dela com o LOBS de pessoas em quem confia (Ajustes &gt; Conexões). A conexão só existe depois que as duas aceitam. Cada pessoa escolhe o que a outra pode fazer do lado dela: mandar recados, ver se ela está livre ou ocupada (só os horários, nunca o assunto dos compromissos) e marcar na agenda dela (desligado por padrão, ou só com confirmação). O outro lado vê o nome da pessoa. Recados e pedidos entre conexões ficam registrados por 30 dias, e a conexão pode ser pausada ou desfeita a qualquer momento, pelas duas.
@@ -368,6 +373,11 @@ Cada pessoa pode ter um endereço de e-mail só dela no LOBS (por exemplo, nome-
   confirmation before creating, changing or deleting anything. Content is used only to answer the
   request, goes through the same AI providers (no training on it) and is not copied to our
   database except as part of the recent conversation history. To read a website or search flights at the user's request, the website address is sent to Firecrawl, and the route, dates and number of passengers are sent to SerpApi (which queries Google Flights); no other user data is sent. If the user connects their own account on these services, the API key is stored encrypted (AES-256), never shown back, and can be removed at any time.
+</p>
+
+<h3>LOBS Personal: iPhone Calendar (iCloud), in English</h3>
+<p>
+Users may connect their iPhone Calendar with their Apple ID and an app-specific password they create in their Apple account only for LOBS and can revoke there at any time (the regular Apple ID password is never requested). Both are stored encrypted (AES-256), never shown back, and used only to talk to Apple's iCloud. LOBS reads, creates, changes and deletes calendar events only when the user asks, and confirms before deleting. Events are used only to answer the request, go through the same AI providers (no training on them) and are not copied to our database except as part of the recent conversation history. Disconnecting or deleting the account deletes the Apple ID and app-specific password; nothing is deleted from the user's calendar.
 </p>
 
 <h3>LOBS Personal: trusted connections, in English</h3>
